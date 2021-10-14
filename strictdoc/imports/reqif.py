@@ -44,7 +44,7 @@ class SpecObject:
 class ReqIFImport:
     @staticmethod
     def import_from_file(input_file):
-        with open(input_file, "r") as file:
+        with open(input_file, "r", encoding="UTF-8") as file:
             # Read each line in the file, readlines() returns a list of lines
             content = file.read()
         try:
