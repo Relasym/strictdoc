@@ -18,7 +18,7 @@ def test_mapping_uid():
     assert ("_oE860C2FEeyvlO4vtsM_UA" in object_string)
 
 
-def test_mapping_uid_failed():
+def test_mapping_uid_notIn():
     # 1 create testobject from string
     object_string = r"""<ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_oE860C2FEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:00:45.839+02:00" LONG-NAME="requirement_ID">
                   <TYPE>
