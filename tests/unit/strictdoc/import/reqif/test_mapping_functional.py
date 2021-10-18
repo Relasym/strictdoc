@@ -3,7 +3,7 @@ from xml.etree.ElementTree import Element
 from strictdoc.imports.reqif.reqif_objects.specobject import SpecObject
 
 
-def test_mapping_hlr():
+def test_mapping_functional():
     # 1 create testobject from string
     object_string = """<SPEC-OBJECT IDENTIFIER="_eDO24C2IEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:32:40.205+02:00">
           <VALUES>
