@@ -8,6 +8,7 @@ from strictdoc.backend.dsl.models.document import Document
 from strictdoc.backend.dsl.models.document_config import DocumentConfig
 from strictdoc.backend.dsl.models.section import Section
 from strictdoc.backend.dsl.writer import SDWriter
+from strictdoc.imports.reqif.reqif_objects.specobject import SpecObject
 
 
 class Level:
@@ -28,17 +29,6 @@ class Level:
             return 0
 
 
-class SpecObject:
-    def __init__(self, object_type, object_uid, object_content):
-        self.object_type = object_type
-        self.object_uid = object_uid
-        self.object_content = object_content
-
-    def __str__(self):
-        return f"SpecObject(object_type = {self.object_type}, object_uid = {self.object_uid}), object_content = {self.object_content})"
-
-    def __repr__(self):
-        return str(self)
 
 
 class ReqIFImport:
@@ -122,7 +112,7 @@ class ReqIFImport:
             parsed_spec_objects.append(SpecObject(object_type, object_uid, object_content))
 
         document_config = DocumentConfig(None, "0.0.1", "DOC-N-001", [], None)
-        document = Document("Test ReqIF", "Test ReqIF", document_config, [], [])
+        document = Document("Test reqif", "Test reqif", document_config, [], [])
 
         current_section = document
         previous_level_components = [0]

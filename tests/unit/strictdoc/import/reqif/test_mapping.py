@@ -1,6 +1,6 @@
 from xml.etree import ElementTree as etree
 from xml.etree.ElementTree import Element
-from strictdoc.imports.reqif import SpecObject
+from strictdoc.imports.reqif.reqif_objects.specobject import SpecObject
 
 
 def test_mapping():
@@ -38,7 +38,7 @@ def test_mapping():
           </TYPE>
         </SPEC-OBJECT>"""
     # parse object here
-    xml_object = etree.parse(object_string, etree.XMLParser())
+    xml_object = etree.fromstring(object_string, etree.XMLParser())
 
     # 2 test mapping
     spec_object = SpecObject.parse(xml_object)
