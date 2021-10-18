@@ -42,7 +42,7 @@ def test_mapping_test():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_g_yJwC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="tests\unit\strictdoc">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="../reqif">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_IjYFQC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -72,7 +72,9 @@ def test_mapping_test():
     spec_object = SpecObject.parse(xml_object, attributes_map)
 
     # 3 assert
+    # [LLR001-T001]
     assert (spec_object.uid == "LLR001-T001")
+    # [/LLR001-T001]
     assert (spec_object.type == "Software")
     assert (spec_object.initial_condition == "ReqIF requirement_ID is passed into the mapping function.")
     assert (spec_object.test_sequence == "The correct value for the requirement_ID shall be passed to the function and the function returns the same value as result and compares it to the predefined test value.")
