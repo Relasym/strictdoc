@@ -72,8 +72,11 @@ def test_mapping_test():
     spec_object = SpecObject.parse(xml_object, attributes_map)
 
     # 3 assert
-    assert (spec_object.object_uid == "LLR001-T001")
-    assert (spec_object.object_title == "The import function shall import a .reqif file and convert it to an .sdoc file")
-    assert (spec_object.object_allocation == "Software")
-    assert (spec_object.object_asil == "none")
-    assert (spec_object.object_status == "Draft")
+    assert (spec_object.uid == "LLR001-T001")
+    assert (spec_object.type == "Software")
+    assert (spec_object.initial_condition == "ReqIF requirement_ID is passed into the mapping function.")
+    assert (spec_object.test_sequence == "The correct value for the requirement_ID shall be passed to the function and the function returns the same value as result and compares it to the predefined test value.")
+    assert (spec_object.target_value == "true")
+    assert (spec_object.objective == "The test function shall test the mapping of the ReqIF attribute requirement_ID to the SDoC attribute UID.")
+    assert (spec_object.reference == "tests\unit\strictdoc")
+    assert (spec_object.status == "Draft")
