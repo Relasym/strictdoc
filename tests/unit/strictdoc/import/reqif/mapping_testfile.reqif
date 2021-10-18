@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<REQ-IF xmlns="http://www.omg.org/spec/ReqIF/20110401/reqif.xsd" xmlns:configuration="http://eclipse.org/rmf/pror/toolextensions/1.0">
+  <THE-HEADER>
+    <REQ-IF-HEADER IDENTIFIER="_Z5pggSzGEey_QIvU1w5Ozg">
+      <COMMENT>Created by Team CB</COMMENT>
+      <CREATION-TIME>2021-10-14T10:11:59.495+02:00</CREATION-TIME>
+      <REQ-IF-TOOL-ID>ReqIF Studio (https://reqif.academy)</REQ-IF-TOOL-ID>
+      <REQ-IF-VERSION>1.0</REQ-IF-VERSION>
+      <SOURCE-TOOL-ID>ProR (http://pror.org)</SOURCE-TOOL-ID>
+      <TITLE>Mapping_testfile</TITLE>
+    </REQ-IF-HEADER>
+  </THE-HEADER>
+  <CORE-CONTENT>
+    <REQ-IF-CONTENT>
+      <DATATYPES>
+        <DATATYPE-DEFINITION-STRING IDENTIFIER="_Z5pggyzGEey_QIvU1w5Ozg" LAST-CHANGE="2021-10-14T10:11:59.495+02:00" LONG-NAME="T_String32k" MAX-LENGTH="32000"/>
+      </DATATYPES>
+      <SPEC-TYPES>
+        <SPEC-OBJECT-TYPE IDENTIFIER="_dSe2wC2FEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T08:59:33.583+02:00" LONG-NAME="technical_requirements">
+          <SPEC-ATTRIBUTES>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_oE860C2FEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:00:45.839+02:00" LONG-NAME="requirement_ID">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_rWmRwC2FEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:01:08.674+02:00" LONG-NAME="technical_description">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_wgHwUC2FEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:01:42.874+02:00" LONG-NAME="allocation_to_component">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_4xnFYC2FEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:02:39.074+02:00" LONG-NAME="asil">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_7Eyo8C2FEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:02:54.626+02:00" LONG-NAME="target_value">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_9J6iYC2FEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:03:08.451+02:00" LONG-NAME="comment">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_-_ye4C2FEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:03:20.963+02:00" LONG-NAME="status">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+          </SPEC-ATTRIBUTES>
+        </SPEC-OBJECT-TYPE>
+        <SPEC-OBJECT-TYPE IDENTIFIER="_gV9O0C2FEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T08:59:55.279+02:00" LONG-NAME="functional_requirements">
+          <SPEC-ATTRIBUTES>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_FEHY0C2GEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:04:01.802+02:00" LONG-NAME="requirement_ID">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_Hx6b0C2GEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:04:19.722+02:00" LONG-NAME="functional_description">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_KMVP0C2GEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:04:35.674+02:00" LONG-NAME="allocation">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_MZGCUC2GEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:04:50.907+02:00" LONG-NAME="asil">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_OlZh0C2GEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:05:05.555+02:00" LONG-NAME="status">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+          </SPEC-ATTRIBUTES>
+        </SPEC-OBJECT-TYPE>
+        <SPEC-OBJECT-TYPE IDENTIFIER="_BSKKIC2GEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:03:37.666+02:00" LONG-NAME="integration_test">
+          <SPEC-ATTRIBUTES>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_BSKKIS2GEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-14T10:14:06.738+02:00" LONG-NAME="requirement_ID">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_BSKKJC2GEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-14T10:14:56.513+02:00" LONG-NAME="type">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_BSKKJS2GEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-14T10:15:12.512+02:00" LONG-NAME="initial_condition">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_BSKKJi2GEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-14T10:15:33.759+02:00" LONG-NAME="test_sequence">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_a5wPYC2GEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:06:28.090+02:00" LONG-NAME="target_value">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_DjbacC2MEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:46:48.140+02:00" LONG-NAME="objective">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_IjYFQC2XEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:06:04.782+02:00" LONG-NAME="reference">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_g_yJwC2XEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:08:48.951+02:00" LONG-NAME="status">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_Z5pggyzGEey_QIvU1w5Ozg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+          </SPEC-ATTRIBUTES>
+        </SPEC-OBJECT-TYPE>
+      </SPEC-TYPES>
+      <SPEC-OBJECTS>
+        <SPEC-OBJECT IDENTIFIER="_eDO24C2IEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:32:40.205+02:00">
+          <VALUES>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="SR001">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_FEHY0C2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="Draft">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_OlZh0C2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="Software">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_KMVP0C2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_MZGCUC2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="The import function shall import a .reqif file and convert it to an .sdoc file">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_Hx6b0C2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+          </VALUES>
+          <TYPE>
+            <SPEC-OBJECT-TYPE-REF>_gV9O0C2FEeyvlO4vtsM_UA</SPEC-OBJECT-TYPE-REF>
+          </TYPE>
+        </SPEC-OBJECT>
+        <SPEC-OBJECT IDENTIFIER="_lLoc8C2IEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:33:09.153+02:00">
+          <VALUES>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="HLR001">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_FEHY0C2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="Draft">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_OlZh0C2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="Software">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_KMVP0C2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_MZGCUC2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="The import function shall import a SpecObject from the .reqif file.">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_Hx6b0C2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+          </VALUES>
+          <TYPE>
+            <SPEC-OBJECT-TYPE-REF>_gV9O0C2FEeyvlO4vtsM_UA</SPEC-OBJECT-TYPE-REF>
+          </TYPE>
+        </SPEC-OBJECT>
+        <SPEC-OBJECT IDENTIFIER="_sTdpAC2NEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:34:36.007+02:00">
+          <VALUES>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="LLR001">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_oE860C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="Draft">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="Software">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_wgHwUC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="UID">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_7Eyo8C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="The mapping function shall map requirement_ID to UID.">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_rWmRwC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="no comment">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_9J6iYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+          </VALUES>
+          <TYPE>
+            <SPEC-OBJECT-TYPE-REF>_dSe2wC2FEeyvlO4vtsM_UA</SPEC-OBJECT-TYPE-REF>
+          </TYPE>
+        </SPEC-OBJECT>
+        <SPEC-OBJECT IDENTIFIER="_21rDgC2NEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:37:14.335+02:00">
+          <VALUES>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="LLR001-T001">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKIS2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="true">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_a5wPYC2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="The test function shall test the mapping of the ReqIF attribute requirement_ID to the SDoC attribute UID.">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_DjbacC2MEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="Software">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKJC2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ReqIF requirement_ID is passed into the mapping function.">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKJS2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="The correct value for the requirement_ID shall be passed to the function and the function returns the same value as result and compares it to the predefined test value.">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKJi2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="Draft">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_g_yJwC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="tests\unit\strictdoc">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_IjYFQC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+          </VALUES>
+          <TYPE>
+            <SPEC-OBJECT-TYPE-REF>_BSKKIC2GEeyvlO4vtsM_UA</SPEC-OBJECT-TYPE-REF>
+          </TYPE>
+        </SPEC-OBJECT>
+        <SPEC-OBJECT IDENTIFIER="_RA_GYC_qEeyB1oPtq4HRdw" LAST-CHANGE="2021-10-18T10:06:48.378+02:00">
+          <VALUES>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ReqIF status is passed into the mapping function.">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKJS2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="LLR001-T001">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKIS2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="Draft">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_g_yJwC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="true">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_a5wPYC2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="Software">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKJC2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="The correct value for status shall be passed to the function and the function returns the same value as result and compares it to the predefined test value.">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKJi2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="The test function shall test the mapping of the ReqIF attribute status to the SDoC attribute STATUS.">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_DjbacC2MEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="tests\unit\strictdoc">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_IjYFQC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+          </VALUES>
+          <TYPE>
+            <SPEC-OBJECT-TYPE-REF>_BSKKIC2GEeyvlO4vtsM_UA</SPEC-OBJECT-TYPE-REF>
+          </TYPE>
+        </SPEC-OBJECT>
+      </SPEC-OBJECTS>
+      <SPEC-RELATIONS/>
+      <SPECIFICATIONS>
+        <SPECIFICATION IDENTIFIER="_Z5pgiizGEey_QIvU1w5Ozg" LAST-CHANGE="2021-10-14T10:11:59.495+02:00" LONG-NAME="Specification Document">
+          <VALUES/>
+          <TYPE>
+            <SPECIFICATION-TYPE-REF>_Z5pghizGEey_QIvU1w5Ozg</SPECIFICATION-TYPE-REF>
+          </TYPE>
+          <CHILDREN>
+            <SPEC-HIERARCHY IDENTIFIER="_eDzeoC2IEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:21:00.153+02:00">
+              <OBJECT>
+                <SPEC-OBJECT-REF>_eDO24C2IEeyvlO4vtsM_UA</SPEC-OBJECT-REF>
+              </OBJECT>
+              <CHILDREN>
+                <SPEC-HIERARCHY IDENTIFIER="_lMO54C2IEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:21:52.817+02:00">
+                  <OBJECT>
+                    <SPEC-OBJECT-REF>_lLoc8C2IEeyvlO4vtsM_UA</SPEC-OBJECT-REF>
+                  </OBJECT>
+                  <CHILDREN>
+                    <SPEC-HIERARCHY IDENTIFIER="_sUCQwC2NEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:58:25.954+02:00">
+                      <OBJECT>
+                        <SPEC-OBJECT-REF>_sTdpAC2NEeyvlO4vtsM_UA</SPEC-OBJECT-REF>
+                      </OBJECT>
+                      <CHILDREN>
+                        <SPEC-HIERARCHY IDENTIFIER="_22OdIC2NEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T09:59:41.786+02:00">
+                          <OBJECT>
+                            <SPEC-OBJECT-REF>_21rDgC2NEeyvlO4vtsM_UA</SPEC-OBJECT-REF>
+                          </OBJECT>
+                        </SPEC-HIERARCHY>
+                        <SPEC-HIERARCHY IDENTIFIER="_RBjHEC_qEeyB1oPtq4HRdw" LAST-CHANGE="2021-10-18T10:06:11.248+02:00">
+                          <OBJECT>
+                            <SPEC-OBJECT-REF>_RA_GYC_qEeyB1oPtq4HRdw</SPEC-OBJECT-REF>
+                          </OBJECT>
+                        </SPEC-HIERARCHY>
+                      </CHILDREN>
+                    </SPEC-HIERARCHY>
+                  </CHILDREN>
+                </SPEC-HIERARCHY>
+              </CHILDREN>
+            </SPEC-HIERARCHY>
+          </CHILDREN>
+        </SPECIFICATION>
+      </SPECIFICATIONS>
+    </REQ-IF-CONTENT>
+  </CORE-CONTENT>
+  <TOOL-EXTENSIONS>
+    <REQ-IF-TOOL-EXTENSION>
+      <configuration:ProrToolExtension>
+        <configuration:generalConfiguration>
+          <configuration:ProrGeneralConfiguration>
+            <configuration:labelConfiguration>
+              <configuration:LabelConfiguration>
+                <defaultLabel>Description</defaultLabel>
+              </configuration:LabelConfiguration>
+            </configuration:labelConfiguration>
+          </configuration:ProrGeneralConfiguration>
+        </configuration:generalConfiguration>
+        <configuration:presentationConfigurations>
+          <configuration:ProrPresentationConfigurations/>
+        </configuration:presentationConfigurations>
+      </configuration:ProrToolExtension>
+    </REQ-IF-TOOL-EXTENSION>
+  </TOOL-EXTENSIONS>
+</REQ-IF>
