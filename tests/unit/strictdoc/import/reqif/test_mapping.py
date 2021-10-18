@@ -39,8 +39,7 @@ def test_mapping():
         </SPEC-OBJECT>"""
 
     # create test object
-    test_object = SpecObject(uid="SR001", status="Draft", allocation="Software", asil="none",
-                             functional_description="The import function shall import a .reqif file and convert it to an .sdoc file")
+    test_object = SpecObject(uid="SR001", status="Draft", allocation="Software", asil="none", functional_description="The import function shall import a .reqif file and convert it to an .sdoc file")
 
     # parse object here
     xml_object = etree.fromstring(object_string, etree.XMLParser())
