@@ -1,9 +1,9 @@
 class SpecObject:
-    def __init__(self, type=None, uid=None, status=None, title=None, allocation=None,
+    def __init__(self, test_type=None, uid=None, status=None, title=None, allocation=None,
                  asil=None, objective=None, initial_condition=None, test_sequence=None, target_value=None,
                  reference=None, allocation_to_component=None, comment=None, technical_description=None,
                  functional_description=None):
-        self.type = type
+        self.type = test_type
         self.uid = uid
         self.title = title
         self.status = status

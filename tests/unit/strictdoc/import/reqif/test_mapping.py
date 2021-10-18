@@ -37,6 +37,11 @@ def test_mapping():
             <SPEC-OBJECT-TYPE-REF>_gV9O0C2FEeyvlO4vtsM_UA</SPEC-OBJECT-TYPE-REF>
           </TYPE>
         </SPEC-OBJECT>"""
+
+    # create test object
+    test_object = SpecObject(uid="SR001", status="Draft", allocation="Software", asil="none",
+                             functional_description="The import function shall import a .reqif file and convert it to an .sdoc file")
+
     # parse object here
     xml_object = etree.fromstring(object_string, etree.XMLParser())
 
@@ -44,4 +49,8 @@ def test_mapping():
     spec_object = SpecObject.parse(xml_object)
 
     # 3 assert
-    assert (spec_object.object_uid == "SR001")
+    assert (spec_object.uid == test_object.uid)
+    assert (spec_object.status == test_object.status)
+    assert (spec_object.allocation == test_object.allocation)
+    assert (spec_object.asil == test_object.asil)
+    assert (spec_object.functional_description == test_object.functional_description)
