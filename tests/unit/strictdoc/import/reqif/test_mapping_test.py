@@ -5,7 +5,7 @@ from strictdoc.imports.reqif.reqif_objects.specobject import SpecObject
 
 def test_mapping_test():
     # 1 create testobject from string
-    object_string = """<SPEC-OBJECT IDENTIFIER="_21rDgC2NEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:37:14.335+02:00">
+    object_string = r"""<SPEC-OBJECT IDENTIFIER="_21rDgC2NEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:37:14.335+02:00">
           <VALUES>
             <ATTRIBUTE-VALUE-STRING THE-VALUE="LLR001-T001">
               <DEFINITION>
@@ -78,5 +78,5 @@ def test_mapping_test():
     assert (spec_object.test_sequence == "The correct value for the requirement_ID shall be passed to the function and the function returns the same value as result and compares it to the predefined test value.")
     assert (spec_object.target_value == "true")
     assert (spec_object.objective == "The test function shall test the mapping of the ReqIF attribute requirement_ID to the SDoC attribute UID.")
-    assert (spec_object.reference == "tests\unit\strictdoc")
+    assert (spec_object.reference == r"tests\unit\strictdoc")
     assert (spec_object.status == "Draft")

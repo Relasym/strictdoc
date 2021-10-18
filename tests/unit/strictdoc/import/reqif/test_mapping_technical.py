@@ -5,7 +5,7 @@ from strictdoc.imports.reqif.reqif_objects.specobject import SpecObject
 
 def test_mapping_technical():
     # 1 create testobject from string
-    object_string = """</SPEC-OBJECT>
+    object_string = r"""</SPEC-OBJECT>
         <SPEC-OBJECT IDENTIFIER="_sTdpAC2NEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:34:36.007+02:00">
           <VALUES>
             <ATTRIBUTE-VALUE-STRING THE-VALUE="LLR001">
