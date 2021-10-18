@@ -13,7 +13,7 @@ try:
     from strictdoc.core.actions.export_action import ExportAction
     from strictdoc.core.actions.passthrough_action import PassthroughAction
     from strictdoc.helpers.parallelizer import Parallelizer
-    from strictdoc.imports.reqif import ReqIFImport
+    from strictdoc.imports.reqif.reqif import ReqIFImport
 
 except FileNotFoundError:
     print("error: could not locate strictdoc's root folder.")
