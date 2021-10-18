@@ -38,13 +38,20 @@ def test_mapping_status():
           </TYPE>
         </SPEC-OBJECT>"""
 
-    spec_object_type = "functional"
+    # spec_object_type = "functional"
+    attributes_map = {
+        "requirement_ID": "_FEHY0C2GEeyvlO4vtsM_UA",
+        "functional_description": "_Hx6b0C2GEeyvlO4vtsM_UA",
+        "allocation": "_KMVP0C2GEeyvlO4vtsM_UA",
+        "asil": "_MZGCUC2GEeyvlO4vtsM_UA",
+        "status": "_OlZh0C2GEeyvlO4vtsM_UA"
+    }
 
     # parse object here
     xml_object = etree.fromstring(object_string)
 
     # 2 test mapping
-    spec_object = SpecObject.parse(xml_object, spec_object_type)
+    spec_object = SpecObject.parse(xml_object, attributes_map)
 
     # 3 assert
     assert (spec_object.object_status == "Draft")

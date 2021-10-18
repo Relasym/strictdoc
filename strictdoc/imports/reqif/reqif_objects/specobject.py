@@ -12,7 +12,7 @@ class SpecObject:
         return str(self)
 
     @staticmethod
-    def parse(etree, spec_object_type):
+    def parse(etree, attibutes_map):
         # actual parsing
         return SpecObject("Type", "UID", "Content", "Status")
 

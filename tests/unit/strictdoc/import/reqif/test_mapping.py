@@ -44,4 +44,4 @@ def test_mapping():
     spec_object = SpecObject.parse(xml_object)
 
     # 3 assert
-    assert (spec_object.object_uid == "_eDO24C2IEeyvlO4vtsM_UA")
+    assert (spec_object.object_uid == "SR001")
