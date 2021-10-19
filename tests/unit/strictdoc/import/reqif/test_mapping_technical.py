@@ -3,9 +3,9 @@ from xml.etree.ElementTree import Element
 from strictdoc.imports.reqif.reqif_objects.specobject import SpecObject
 
 
-def test_mapping_technical():
+def test_mapping_technical_positive():
     # 1 create testobject from string
-    object_string = r"""</SPEC-OBJECT>
+    object_string_pos = r"""</SPEC-OBJECT>
         <SPEC-OBJECT IDENTIFIER="_sTdpAC2NEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:34:36.007+02:00">
           <VALUES>
             <ATTRIBUTE-VALUE-STRING THE-VALUE="LLR001">
@@ -61,18 +61,30 @@ def test_mapping_technical():
     }
 
     # parse object here
-    xml_object = etree.fromstring(object_string)
+    xml_object = etree.fromstring(object_string_pos)
 
     # 2 test mapping
     spec_object = SpecObject.parse_technical(xml_object, attributes_map)
 
     # 3 assert
-    # [LLR001-T001]
+    # []
     assert (spec_object.uid == "LLR001")
-    # [/LLR001-T001]
+    # [/]
+    # []
     assert (spec_object.title == "The mapping function shall map requirement_ID to UID.")
+    # [/]
+    # []
     assert (spec_object.allocation_to_component == "Software")
+    # [/]
+    # []
     assert (spec_object.asil == "none")
+    # [/]
+    # []
     assert (spec_object.status == "Draft")
+    # [/]
+    # []
     assert (spec_object.target_value == "UID")
+    # [/]
+    # []
     assert (spec_object.comment == "no comment")
+    # [/]
