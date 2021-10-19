@@ -54,8 +54,18 @@ def test_mapping_functional():
     spec_object = SpecObject.parse(xml_object, attributes_map)
 
     # 3 assert
+    # [LLR001-T001]
     assert (spec_object.uid == "SR001")
+    # [/LLR001-T001]
+    # [LLR005-T001]
     assert (spec_object.title == "The import function shall import a .reqif file and convert it to an .sdoc file")
+    # [/LLR005-T001]
+    # [LLR002-T001]
     assert (spec_object.allocation == "Software")
+    # [/LLR002-T001]
+    # [LLR003-T001]
     assert (spec_object.asil == "none")
+    # [/LLR003-T001]
+    # [LLR004-T001]
     assert (spec_object.status == "Draft")
+    # [/LLR004-T001]
