@@ -67,12 +67,24 @@ def test_mapping_technical_positive():
     spec_object = SpecObject.parse_technical(xml_object, attributes_map)
 
     # 3 assert
-    # [LLR001-T001]
+    # []
     assert (spec_object.uid == "LLR001")
-    # [/LLR001-T001]
+    # [/]
+    # []
     assert (spec_object.title == "The mapping function shall map requirement_ID to UID.")
+    # [/]
+    # []
     assert (spec_object.allocation_to_component == "Software")
+    # [/]
+    # []
     assert (spec_object.asil == "none")
+    # [/]
+    # []
     assert (spec_object.status == "Draft")
+    # [/]
+    # []
     assert (spec_object.target_value == "UID")
+    # [/]
+    # []
     assert (spec_object.comment == "no comment")
+    # [/]
