@@ -72,13 +72,27 @@ def test_mapping_test():
     spec_object = SpecObject.parse(xml_object, attributes_map)
 
     # 3 assert
-    # [LLR001-T001]
+    # [LLR201-T001]
     assert (spec_object.uid == "LLR001-T001")
-    # [/LLR001-T001]
+    # [/LLR201-T001]
+    # [LLR203-T001]
     assert (spec_object.type == "Software")
+    # [/LLR203-T001]
+    # [LLR204-T001]
     assert (spec_object.initial_condition == "ReqIF requirement_ID is passed into the mapping function.")
+    # [/LLR204-T001]
+    # [LLR208-T001]
     assert (spec_object.test_sequence == "The correct value for the requirement_ID shall be passed to the function and the function returns the same value as result and compares it to the predefined test value.")
+    # [/LLR208-T001]
+    # [LLR207-T001]
     assert (spec_object.target_value == "true")
+    # [/LLR207-T001]
+    # [LLR206-T101]
     assert (spec_object.objective == "The test function shall test the mapping of the ReqIF attribute requirement_ID to the SDoC attribute UID.")
-    assert (spec_object.reference == r"tests\unit\strictdoc")
+    # [/LLR206-T101]
+    # [LLR202-T001]
+    assert (spec_object.traceability == r"tests\unit\strictdoc")
+    # [/LLR202-T001]
+    # [LLR205-T001]
     assert (spec_object.status == "Draft")
+    # [/LLR205-T001]
