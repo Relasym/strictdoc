@@ -3,9 +3,9 @@ from xml.etree.ElementTree import Element
 from strictdoc.imports.reqif.reqif_objects.specobject import SpecObject
 
 
-def test_mapping():
+def test_mapping_positive():
     # 1 create testobject from string
-    object_string = r"""<SPEC-OBJECT IDENTIFIER="_eDO24C2IEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:32:40.205+02:00">
+    object_string_pos = r"""<SPEC-OBJECT IDENTIFIER="_eDO24C2IEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:32:40.205+02:00">
           <VALUES>
             <ATTRIBUTE-VALUE-STRING THE-VALUE="SR001">
               <DEFINITION>
@@ -42,7 +42,7 @@ def test_mapping():
     test_object = SpecObject(uid="SR001", status="Draft", allocation="Software", asil="none", functional_description="The import function shall import a .reqif file and convert it to an .sdoc file")
 
     # parse object here
-    xml_object = etree.fromstring(object_string, etree.XMLParser())
+    xml_object = etree.fromstring(object_string_pos, etree.XMLParser())
 
     # 2 test mapping
     spec_object = SpecObject.parse(xml_object)
