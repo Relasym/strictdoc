@@ -34,6 +34,7 @@ class SpecObject:
     @staticmethod
     def parse(etree, attibutes_map):
         """actual parsing"""
+        raise ValueError("uid_malformed")
         return SpecObject("Type", "UID", "Content", "Status")
 
     @staticmethod

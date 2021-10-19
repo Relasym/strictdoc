@@ -1,9 +1,25 @@
 from xml.etree import ElementTree as etree
 from xml.etree.ElementTree import Element
 from strictdoc.imports.reqif.reqif_objects.specobject import SpecObject
+import pytest
 
 
-def test_mapping_technical_positive():
+@pytest.fixture
+def fixture_technical():
+    # spec_object_type = "technical"
+    attributes_map = {
+        "requirement_ID": "_oE860C2FEeyvlO4vtsM_UA",
+        "allocation_to_component": "_wgHwUC2FEeyvlO4vtsM_UA",
+        "asil": "_4xnFYC2FEeyvlO4vtsM_UA",
+        "status": "_-_ye4C2FEeyvlO4vtsM_UA",
+        "target_value": "_7Eyo8C2FEeyvlO4vtsM_UA",
+        "technical_description": "_rWmRwC2FEeyvlO4vtsM_UA",
+        "comment": "_9J6iYC2FEeyvlO4vtsM_UA"
+    }
+    return attributes_map
+
+
+def test_mapping_technical_positive(fixture_technical):
     # 1 create testobject from string
     object_string_pos = r"""</SPEC-OBJECT>
         <SPEC-OBJECT IDENTIFIER="_sTdpAC2NEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:34:36.007+02:00">
@@ -49,22 +65,11 @@ def test_mapping_technical_positive():
           </TYPE>
         </SPEC-OBJECT>"""
 
-    # spec_object_type = "technical"
-    attributes_map = {
-        "requirement_ID": "_oE860C2FEeyvlO4vtsM_UA",
-        "allocation_to_component": "_wgHwUC2FEeyvlO4vtsM_UA",
-        "asil": "_4xnFYC2FEeyvlO4vtsM_UA",
-        "status": "_-_ye4C2FEeyvlO4vtsM_UA",
-        "target_value": "_7Eyo8C2FEeyvlO4vtsM_UA",
-        "technical_description": "_rWmRwC2FEeyvlO4vtsM_UA",
-        "comment": "_9J6iYC2FEeyvlO4vtsM_UA"
-    }
-
     # parse object here
     xml_object = etree.fromstring(object_string_pos)
 
     # 2 test mapping
-    spec_object = SpecObject.parse_technical(xml_object, attributes_map)
+    spec_object = SpecObject.parse_technical(xml_object, fixture_technical)
 
     # 3 assert
     # []

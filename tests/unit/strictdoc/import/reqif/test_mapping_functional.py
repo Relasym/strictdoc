@@ -1,9 +1,23 @@
 from xml.etree import ElementTree as etree
 from xml.etree.ElementTree import Element
 from strictdoc.imports.reqif.reqif_objects.specobject import SpecObject
+import pytest
 
 
-def test_mapping_functional_positive():
+@pytest.fixture
+def fixture_functional():
+    # spec_object_type = "functional"
+    attributes_map = {
+        "requirement_ID": "_FEHY0C2GEeyvlO4vtsM_UA",
+        "functional_description": "_Hx6b0C2GEeyvlO4vtsM_UA",
+        "allocation": "_KMVP0C2GEeyvlO4vtsM_UA",
+        "asil": "_MZGCUC2GEeyvlO4vtsM_UA",
+        "status": "_OlZh0C2GEeyvlO4vtsM_UA"
+    }
+    return attributes_map
+
+
+def test_mapping_functional_positive(fixture_functional):
     # 1 create testobject from string
     object_string_pos = r"""<SPEC-OBJECT IDENTIFIER="_eDO24C2IEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:32:40.205+02:00">
           <VALUES>
@@ -38,20 +52,11 @@ def test_mapping_functional_positive():
           </TYPE>
         </SPEC-OBJECT>"""
 
-    # spec_object_type = "functional"
-    attributes_map = {
-        "requirement_ID": "_FEHY0C2GEeyvlO4vtsM_UA",
-        "functional_description": "_Hx6b0C2GEeyvlO4vtsM_UA",
-        "allocation": "_KMVP0C2GEeyvlO4vtsM_UA",
-        "asil": "_MZGCUC2GEeyvlO4vtsM_UA",
-        "status": "_OlZh0C2GEeyvlO4vtsM_UA"
-    }
-
     # parse object here
     xml_object = etree.fromstring(object_string_pos)
 
     # 2 test mapping
-    spec_object = SpecObject.parse(xml_object, attributes_map)
+    spec_object = SpecObject.parse(xml_object, fixture_functional)
 
     # 3 assert
     # [LLR001-T001]
