@@ -40,19 +40,38 @@ class SpecObjectParser:
 
     @staticmethod
     def parse(element):
-
+        # append all values to an empty list
+        attribute_list = []
         for elem in element[0]:
-            print(elem.attrib)
+            attribute_list.append(elem.attrib["THE-VALUE"])
+        print(attribute_list)
+
+        # append all identifiers to an empty list
+        identifier_list = []
+        for elem in element[0]:
+            identifier_list.append(elem[0][0].text)
+        print(identifier_list)
+
+        # MISSING - check for missing or malformed
+
+        # MISSING - dict with attribute names and corresponding identifiers
+        dict_attr = {}
+        for identifier in identifier_list:
+            dict_attr.update()
+
+        # initialize requirement object and assign values
+
+
         """for(attributes):
             get values;
             specobject.value = value
         check attributes;
-        if technical attributes -> specobject.type = technical,
+        if technical attributes -> specobject.type = technical
         if functional attr...;
         if other attr or attr missing -> parse_all
         """
         # raise ValueError("uid_malformed")
-        return Requirement("Type", "UID", "Content", "Status",'status', 'tags', 'references', 'title', 'body', 'rationale', 'rationale_multiline', 'comments', 'special_fields')
+        return Requirement("Type", "UID", "Content", "Status", 'status', 'tags', 'references', 'title', 'body', 'rationale', 'rationale_multiline', 'comments', 'special_fields')
 
 
 specobject = r"""<SPEC-OBJECT IDENTIFIER="_21rDgC2NEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-19T11:50:26.322+02:00">
