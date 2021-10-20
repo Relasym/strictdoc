@@ -24,7 +24,6 @@ def fixture_test_relation_map():
     }
     return relation_map
 
-
 @pytest.fixture
 def fixture_test_uid():
     # 1 create testobject from string
