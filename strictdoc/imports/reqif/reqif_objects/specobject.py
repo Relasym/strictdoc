@@ -31,24 +31,16 @@ class SpecObject:
     def __repr__(self):
         return str(self)
 
+
     @staticmethod
-    def parse(etree, attibutes_map):
-        """actual parsing"""
+    def parse(etree, attributes_map):
+        """for(attributes):
+            get values;
+            specobject.value = value
+        check attributes;
+        if technical attributes -> specobject.type = technical,
+        if functional attr...;
+        if other attr or attr missing -> parse_all
+        """
         raise ValueError("uid_malformed")
         return SpecObject("Type", "UID", "Content", "Status")
-
-    @staticmethod
-    def parse_technical(etree, attibutes_map):
-        """map only technical"""
-        return SpecObject("Type", "UID", "Content", "Status")
-
-    @staticmethod
-    def parse_functional(etree, attibutes_map):
-        """map only functional"""
-        return SpecObject("Type", "UID", "Content", "Status")
-
-    @staticmethod
-    def parse_test(etree, attibutes_map):
-        """map only test"""
-        return SpecObject("Type", "UID", "Content", "Status")
-
