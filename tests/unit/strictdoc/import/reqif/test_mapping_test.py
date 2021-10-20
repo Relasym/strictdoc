@@ -4,81 +4,17 @@ from strictdoc.imports.reqif.reqif_objects.specobjectparser import SpecObjectPar
 import pytest
 
 pytest_plugins = [
-     "test_mapping_fixtures.fixture_test_uid",
+     "test_mapping_fixtures.fixture_test"
   ]
 
 
-@pytest.fixture
-def fixture_test_map():
-    # spec_object_type = "test"
-    attributes_map = {
-        "requirement_ID": "_BSKKIS2GEeyvlO4vtsM_UA",
-        "type": "_BSKKJC2GEeyvlO4vtsM_UA",
-        "initial_condition": "_BSKKJS2GEeyvlO4vtsM_UA",
-        "test_sequence": "_BSKKJi2GEeyvlO4vtsM_UA",
-        "target_value": "_a5wPYC2GEeyvlO4vtsM_UA",
-        "objective": "_DjbacC2MEeyvlO4vtsM_UA",
-        "reference": "_IjYFQC2XEeyvlO4vtsM_UA",
-        "status": "_g_yJwC2XEeyvlO4vtsM_UA"
-    }
-    return attributes_map
-
-
-def test_mapping_test_positive(fixture_test_map):
-    # 1 create testobject from string
-    object_string_pos = r"""<SPEC-OBJECT IDENTIFIER="_21rDgC2NEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:37:14.335+02:00">
-          <VALUES>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="LLR001-T001">
-              <DEFINITION>
-                <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKIS2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
-              </DEFINITION>
-            </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="true">
-              <DEFINITION>
-                <ATTRIBUTE-DEFINITION-STRING-REF>_a5wPYC2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
-              </DEFINITION>
-            </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="The test function shall test the mapping of the ReqIF attribute requirement_ID to the SDoC attribute UID.">
-              <DEFINITION>
-                <ATTRIBUTE-DEFINITION-STRING-REF>_DjbacC2MEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
-              </DEFINITION>
-            </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="Software">
-              <DEFINITION>
-                <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKJC2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
-              </DEFINITION>
-            </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="ReqIF requirement_ID is passed into the mapping function.">
-              <DEFINITION>
-                <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKJS2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
-              </DEFINITION>
-            </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="The correct value for the requirement_ID shall be passed to the function and the function returns the same value as result and compares it to the predefined test value.">
-              <DEFINITION>
-                <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKJi2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
-              </DEFINITION>
-            </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="Draft">
-              <DEFINITION>
-                <ATTRIBUTE-DEFINITION-STRING-REF>_g_yJwC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
-              </DEFINITION>
-            </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="../reqif">
-              <DEFINITION>
-                <ATTRIBUTE-DEFINITION-STRING-REF>_IjYFQC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
-              </DEFINITION>
-            </ATTRIBUTE-VALUE-STRING>
-          </VALUES>
-          <TYPE>
-            <SPEC-OBJECT-TYPE-REF>_BSKKIC2GEeyvlO4vtsM_UA</SPEC-OBJECT-TYPE-REF>
-          </TYPE>
-        </SPEC-OBJECT>"""
+def test_mapping_test_positive(fixture_test_uid, fixture_test_attribute_map, fixture_test_relation_map):
 
     # parse object here
-    xml_object = etree.fromstring(object_string_pos)
+    xml_object = etree.fromstring(fixture_test_uid)
 
     # 2 test mapping
-    requirement = SpecObjectParser.parse(xml_object, fixture_test_map)
+    requirement = SpecObjectParser.parse(xml_object, "test", fixture_test_attribute_map, fixture_test_relation_map)
 
     # 3 assert
     # [LLR201-T001]
@@ -107,14 +43,11 @@ def test_mapping_test_positive(fixture_test_map):
     # [/LLR205-T001]
 
 
-def test_mapping_test_uid_neg(fixture_test_map, fixture_test_uid):
-
-    print(fixture_test_uid)
+def test_mapping_test_uid_neg(fixture_test_uid_malformed, fixture_test_attribute_map, fixture_test_relation_map):
 
     # parse object here
-    xml_object = etree.fromstring(fixture_test_uid)
+    xml_object = etree.fromstring(fixture_test_uid_malformed)
     # [LLR201-T002]
     with pytest.raises(ValueError, match="uid_malformed"):
-        SpecObjectParser.parse(xml_object, fixture_test_uid)
+        SpecObjectParser.parse(xml_object, "test", fixture_test_attribute_map, fixture_test_relation_map)
     # [/LLR201-T002]
-    

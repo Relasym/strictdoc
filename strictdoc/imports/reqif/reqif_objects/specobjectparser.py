@@ -35,7 +35,7 @@ class SpecObjectParser:
     #       return str(self)
 
     @staticmethod
-    def parse(etree, attributes_map):
+    def parse(element, type, attributes_map, relation_map):
         """for(attributes):
             get values;
             specobject.value = value
