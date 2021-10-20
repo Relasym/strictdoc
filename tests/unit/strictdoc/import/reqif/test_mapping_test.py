@@ -36,7 +36,7 @@ def test_mapping_test_positive(fixture_test_uid, fixture_test_attribute_map, fix
     assert (requirement.objective == "The test function shall test the mapping of the ReqIF attribute requirement_ID to the SDoC attribute UID.")
     # [/LLR206-T101]
     # [LLR202-T001]
-    assert (requirement.traceability == r"tests\unit\strictdoc")
+    assert (requirement.traceability == r"..\..\..\tests\unit\strictdoc\import\reqif")
     # [/LLR202-T001]
     # [LLR205-T001]
     assert (requirement.status == "Draft")

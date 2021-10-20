@@ -64,7 +64,7 @@ def fixture_test_uid():
                     <ATTRIBUTE-DEFINITION-STRING-REF>_g_yJwC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
                   </DEFINITION>
                 </ATTRIBUTE-VALUE-STRING>
-                <ATTRIBUTE-VALUE-STRING THE-VALUE="tests\unit\strictdoc">
+                <ATTRIBUTE-VALUE-STRING THE-VALUE="..\..\..\tests\unit\strictdoc\import\reqif">
                   <DEFINITION>
                     <ATTRIBUTE-DEFINITION-STRING-REF>_IjYFQC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
                   </DEFINITION>
@@ -116,7 +116,7 @@ def fixture_test_uid_malformed():
                     <ATTRIBUTE-DEFINITION-STRING-REF>_g_yJwC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
                   </DEFINITION>
                 </ATTRIBUTE-VALUE-STRING>
-                <ATTRIBUTE-VALUE-STRING THE-VALUE="tests\unit\strictdoc">
+                <ATTRIBUTE-VALUE-STRING THE-VALUE="..\..\..\tests\unit\strictdoc\import\reqif">
                   <DEFINITION>
                     <ATTRIBUTE-DEFINITION-STRING-REF>_IjYFQC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
                   </DEFINITION>
@@ -168,7 +168,7 @@ def fixture_test_uid_missing():
                     <ATTRIBUTE-DEFINITION-STRING-REF>_g_yJwC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
                   </DEFINITION>
                 </ATTRIBUTE-VALUE-STRING>
-                <ATTRIBUTE-VALUE-STRING THE-VALUE="tests\unit\strictdoc">
+                <ATTRIBUTE-VALUE-STRING THE-VALUE="..\..\..\tests\unit\strictdoc\import\reqif">
                   <DEFINITION>
                     <ATTRIBUTE-DEFINITION-STRING-REF>_IjYFQC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
                   </DEFINITION>
@@ -181,7 +181,7 @@ def fixture_test_uid_missing():
     return object_string_neg
 
 @pytest.fixture
-def fixture_test_uid():
+def fixture_test_type_malformed():
     # 1 create testobject from string
     object_string_pos = r"""<SPEC-OBJECT IDENTIFIER="_21rDgC2NEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-15T11:37:14.335+02:00">
               <VALUES>
@@ -220,7 +220,7 @@ def fixture_test_uid():
                     <ATTRIBUTE-DEFINITION-STRING-REF>_g_yJwC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
                   </DEFINITION>
                 </ATTRIBUTE-VALUE-STRING>
-                <ATTRIBUTE-VALUE-STRING THE-VALUE="tests\unit\strictdoc">
+                <ATTRIBUTE-VALUE-STRING THE-VALUE="..\..\..\tests\unit\strictdoc\import\reqif">
                   <DEFINITION>
                     <ATTRIBUTE-DEFINITION-STRING-REF>_IjYFQC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
                   </DEFINITION>
