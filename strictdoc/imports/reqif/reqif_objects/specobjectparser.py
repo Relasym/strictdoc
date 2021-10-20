@@ -1,3 +1,5 @@
+from xml.etree import ElementTree as etree
+
 from strictdoc.backend.dsl.models.requirement import Requirement
 
 
@@ -34,8 +36,13 @@ class SpecObjectParser:
     #   def __repr__(self):
     #       return str(self)
 
+    # def parse(element, type, attributes_map, relation_map):
+
     @staticmethod
-    def parse(element, type, attributes_map, relation_map):
+    def parse(element):
+
+        for elem in element[0]:
+            print(elem.attrib)
         """for(attributes):
             get values;
             specobject.value = value
@@ -44,5 +51,58 @@ class SpecObjectParser:
         if functional attr...;
         if other attr or attr missing -> parse_all
         """
-        raise ValueError("uid_malformed")
-        return Requirement("Type", "UID", "Content", "Status")
+        # raise ValueError("uid_malformed")
+        return Requirement("Type", "UID", "Content", "Status",'status', 'tags', 'references', 'title', 'body', 'rationale', 'rationale_multiline', 'comments', 'special_fields')
+
+
+specobject = r"""<SPEC-OBJECT IDENTIFIER="_21rDgC2NEeyvlO4vtsM_UA" LAST-CHANGE="2021-10-19T11:50:26.322+02:00">
+          <VALUES>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="LLR001-T001">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKIS2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="true">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_a5wPYC2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="The test function shall test the mapping of the ReqIF attribute requirement_ID to the SDOC attribute UID.">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_DjbacC2MEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="Software">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKJC2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ReqIF requirement_ID is passed into the mapping function.">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKJS2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="The correct value for the requirement_ID shall be passed into the function and the function returns the same value as result and compares it to the predefined test value.">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKJi2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="Draft">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_g_yJwC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="..\..\..\tests\unit\strictdoc\import\reqif">
+              <DEFINITION>
+                <ATTRIBUTE-DEFINITION-STRING-REF>_IjYFQC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
+              </DEFINITION>
+            </ATTRIBUTE-VALUE-STRING>
+          </VALUES>
+          <TYPE>
+            <SPEC-OBJECT-TYPE-REF>_BSKKIC2GEeyvlO4vtsM_UA</SPEC-OBJECT-TYPE-REF>
+          </TYPE>
+        </SPEC-OBJECT>"""
+
+xml_object = etree.fromstring(specobject)
+
+SpecObjectParser.parse(xml_object)
