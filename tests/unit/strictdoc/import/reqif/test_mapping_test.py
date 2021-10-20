@@ -4,7 +4,7 @@ from strictdoc.imports.reqif.reqif_objects.specobject import SpecObject
 import pytest
 
 pytest_plugins = [
-     "import.reqif.test_mapping_fixtures.fixture_test_uid.py",
+     "test_mapping_fixtures.fixture_test_uid.py",
   ]
 
 
