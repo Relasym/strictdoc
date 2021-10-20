@@ -4,7 +4,7 @@ from strictdoc.imports.reqif.reqif_objects.specobjectparser import SpecObjectPar
 import pytest
 
 pytest_plugins = [
-     "test_mapping_fixtures.fixture_test_uid.py",
+     "test_mapping_fixtures.fixture_test_uid",
   ]
 
 
@@ -117,3 +117,4 @@ def test_mapping_test_uid_neg(fixture_test_map, fixture_test_uid):
     with pytest.raises(ValueError, match="uid_malformed"):
         SpecObjectParser.parse(xml_object, fixture_test_uid)
     # [/LLR201-T002]
+    

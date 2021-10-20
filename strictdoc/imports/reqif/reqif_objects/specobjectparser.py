@@ -44,4 +44,5 @@ class SpecObjectParser:
         if functional attr...;
         if other attr or attr missing -> parse_all
         """
+        raise ValueError("uid_malformed")
         return Requirement("Type", "UID", "Content", "Status")
