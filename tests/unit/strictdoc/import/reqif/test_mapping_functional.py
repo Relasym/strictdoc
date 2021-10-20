@@ -1,6 +1,6 @@
 from xml.etree import ElementTree as etree
 from xml.etree.ElementTree import Element
-from strictdoc.imports.reqif.reqif_objects.specobject import SpecObject
+from strictdoc.imports.reqif.reqif_objects.specobjectparser import SpecObjectParser
 import pytest
 
 
@@ -56,21 +56,21 @@ def test_mapping_functional_positive(fixture_functional):
     xml_object = etree.fromstring(object_string_pos)
 
     # 2 test mapping
-    spec_object = SpecObject.parse(xml_object, fixture_functional)
+    requirement = SpecObjectParser.parse(xml_object, fixture_functional)
 
     # 3 assert
     # [LLR001-T001]
-    assert (spec_object.uid == "SR001")
+    assert (requirement.uid == "SR001")
     # [/LLR001-T001]
     # [LLR005-T001]
-    assert (spec_object.title == "The import function shall import a .reqif file and convert it to an .sdoc file")
+    assert (requirement.title == "The import function shall import a .reqif file and convert it to an .sdoc file")
     # [/LLR005-T001]
     # [LLR002-T001]
-    assert (spec_object.allocation == "Software")
+    assert (requirement.allocation == "Software")
     # [/LLR002-T001]
     # [LLR003-T001]
-    assert (spec_object.asil == "none")
+    assert (requirement.asil == "none")
     # [/LLR003-T001]
     # [LLR004-T001]
-    assert (spec_object.status == "Draft")
+    assert (requirement.status == "Draft")
     # [/LLR004-T001]

@@ -1,6 +1,6 @@
 from xml.etree import ElementTree as etree
 from xml.etree.ElementTree import Element
-from strictdoc.imports.reqif.reqif_objects.specobject import SpecObject
+from strictdoc.imports.reqif.reqif_objects.specobjectparser import SpecObjectParser
 
 
 def test_mapping_positive():
@@ -39,17 +39,17 @@ def test_mapping_positive():
         </SPEC-OBJECT>"""
 
     # create test object
-    test_object = SpecObject(uid="SR001", status="Draft", allocation="Software", asil="none", functional_description="The import function shall import a .reqif file and convert it to an .sdoc file")
+    test_object = SpecObjectParser(uid="SR001", status="Draft", allocation="Software", asil="none", functional_description="The import function shall import a .reqif file and convert it to an .sdoc file")
 
     # parse object here
     xml_object = etree.fromstring(object_string_pos, etree.XMLParser())
 
     # 2 test mapping
-    spec_object = SpecObject.parse(xml_object)
+    requirement = SpecObjectParser.parse(xml_object)
 
     # 3 assert
-    assert (spec_object.uid == test_object.uid)
-    assert (spec_object.status == test_object.status)
-    assert (spec_object.allocation == test_object.allocation)
-    assert (spec_object.asil == test_object.asil)
-    assert (spec_object.functional_description == test_object.functional_description)
+    assert (requirement.uid == test_object.uid)
+    assert (requirement.status == test_object.status)
+    assert (requirement.allocation == test_object.allocation)
+    assert (requirement.asil == test_object.asil)
+    assert (requirement.functional_description == test_object.functional_description)

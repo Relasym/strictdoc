@@ -1,6 +1,6 @@
 from xml.etree import ElementTree as etree
 from xml.etree.ElementTree import Element
-from strictdoc.imports.reqif.reqif_objects.specobject import SpecObject
+from strictdoc.imports.reqif.reqif_objects.specobjectparser import SpecObjectParser
 import pytest
 
 
@@ -69,27 +69,27 @@ def test_mapping_technical_positive(fixture_technical):
     xml_object = etree.fromstring(object_string_pos)
 
     # 2 test mapping
-    spec_object = SpecObject.parse_technical(xml_object, fixture_technical)
+    requirement = SpecObjectParser.parse_technical(xml_object, fixture_technical)
 
     # 3 assert
     # []
-    assert (spec_object.uid == "LLR001")
+    assert (requirement.uid == "LLR001")
     # [/]
     # []
-    assert (spec_object.title == "The mapping function shall map requirement_ID to UID.")
+    assert (requirement.title == "The mapping function shall map requirement_ID to UID.")
     # [/]
     # []
-    assert (spec_object.allocation_to_component == "Software")
+    assert (requirement.allocation_to_component == "Software")
     # [/]
     # []
-    assert (spec_object.asil == "none")
+    assert (requirement.asil == "none")
     # [/]
     # []
-    assert (spec_object.status == "Draft")
+    assert (requirement.status == "Draft")
     # [/]
     # []
-    assert (spec_object.target_value == "UID")
+    assert (requirement.target_value == "UID")
     # [/]
     # []
-    assert (spec_object.comment == "no comment")
+    assert (requirement.comment == "no comment")
     # [/]

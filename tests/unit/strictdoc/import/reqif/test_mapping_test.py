@@ -1,6 +1,6 @@
 from xml.etree import ElementTree as etree
 from xml.etree.ElementTree import Element
-from strictdoc.imports.reqif.reqif_objects.specobject import SpecObject
+from strictdoc.imports.reqif.reqif_objects.specobjectparser import SpecObjectParser
 import pytest
 
 pytest_plugins = [
@@ -78,32 +78,32 @@ def test_mapping_test_positive(fixture_test_map):
     xml_object = etree.fromstring(object_string_pos)
 
     # 2 test mapping
-    spec_object = SpecObject.parse(xml_object, fixture_test_map)
+    requirement = SpecObjectParser.parse(xml_object, fixture_test_map)
 
     # 3 assert
     # [LLR201-T001]
-    assert (spec_object.uid == "LLR001-T001")
+    assert (requirement.uid == "LLR001-T001")
     # [/LLR201-T001]
     # [LLR203-T001]
-    assert (spec_object.type == "Software")
+    assert (requirement.type == "Software")
     # [/LLR203-T001]
     # [LLR204-T001]
-    assert (spec_object.initial_condition == "ReqIF requirement_ID is passed into the mapping function.")
+    assert (requirement.initial_condition == "ReqIF requirement_ID is passed into the mapping function.")
     # [/LLR204-T001]
     # [LLR208-T001]
-    assert (spec_object.test_sequence == "The correct value for the requirement_ID shall be passed to the function and the function returns the same value as result and compares it to the predefined test value.")
+    assert (requirement.test_sequence == "The correct value for the requirement_ID shall be passed to the function and the function returns the same value as result and compares it to the predefined test value.")
     # [/LLR208-T001]
     # [LLR207-T001]
-    assert (spec_object.target_value == "true")
+    assert (requirement.target_value == "true")
     # [/LLR207-T001]
     # [LLR206-T101]
-    assert (spec_object.objective == "The test function shall test the mapping of the ReqIF attribute requirement_ID to the SDoC attribute UID.")
+    assert (requirement.objective == "The test function shall test the mapping of the ReqIF attribute requirement_ID to the SDoC attribute UID.")
     # [/LLR206-T101]
     # [LLR202-T001]
-    assert (spec_object.traceability == r"tests\unit\strictdoc")
+    assert (requirement.traceability == r"tests\unit\strictdoc")
     # [/LLR202-T001]
     # [LLR205-T001]
-    assert (spec_object.status == "Draft")
+    assert (requirement.status == "Draft")
     # [/LLR205-T001]
 
 
@@ -115,5 +115,5 @@ def test_mapping_test_uid_neg(fixture_test_map, fixture_test_uid):
     xml_object = etree.fromstring(fixture_test_uid)
     # [LLR201-T002]
     with pytest.raises(ValueError, match="uid_malformed"):
-        SpecObject.parse(xml_object, fixture_test_uid)
+        SpecObjectParser.parse(xml_object, fixture_test_uid)
     # [/LLR201-T002]
