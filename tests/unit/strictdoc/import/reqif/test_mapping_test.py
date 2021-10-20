@@ -43,7 +43,7 @@ def test_mapping_test_positive(fixture_test_uid, fixture_test_attribute_map, fix
     # [/LLR205-T001]
 
 
-def test_mapping_test_uid_neg(fixture_test_uid_malformed, fixture_test_attribute_map, fixture_test_relation_map):
+def test_mapping_test_uid_malformed(fixture_test_uid_malformed, fixture_test_attribute_map, fixture_test_relation_map):
 
     # parse object here
     xml_object = etree.fromstring(fixture_test_uid_malformed)
@@ -51,3 +51,140 @@ def test_mapping_test_uid_neg(fixture_test_uid_malformed, fixture_test_attribute
     with pytest.raises(ValueError, match="uid_malformed"):
         SpecObjectParser.parse(xml_object, "test", fixture_test_attribute_map, fixture_test_relation_map)
     # [/LLR201-T002]
+
+
+def test_mapping_test_uid_missing(fixture_test_uid_missing, fixture_test_attribute_map, fixture_test_relation_map):
+
+    # parse object here
+    xml_object = etree.fromstring(fixture_test_uid_missing)
+    # [LLR201-T003]
+    with pytest.raises(ValueError, match="uid_missing"):
+        SpecObjectParser.parse(xml_object, "test", fixture_test_attribute_map, fixture_test_relation_map)
+    # [/LLR201-T003]
+
+
+def test_mapping_test_type_malformed(fixture_test_type_malformed, fixture_test_attribute_map, fixture_test_relation_map):
+
+    # parse object here
+    xml_object = etree.fromstring(fixture_test_type_malformed)
+    # [LLR203-T002]
+    with pytest.raises(ValueError, match="type_malformed"):
+        SpecObjectParser.parse(xml_object, "test", fixture_test_attribute_map, fixture_test_relation_map)
+    # [/LLR203-T002]
+
+
+def test_mapping_test_traceability_malformed(fixture_test_traceability_malformed, fixture_test_attribute_map, fixture_test_relation_map):
+
+    # parse object here
+    xml_object = etree.fromstring(fixture_test_traceability_malformed)
+    # [LLR202-T002]
+    with pytest.raises(ValueError, match="traceability_malformed"):
+        SpecObjectParser.parse(xml_object, "test", fixture_test_attribute_map, fixture_test_relation_map)
+    # [/LLR202-T002]
+
+
+def test_mapping_test_traceability_missing(fixture_test_traceability_missing, fixture_test_attribute_map, fixture_test_relation_map):
+
+    # parse object here
+    xml_object = etree.fromstring(fixture_test_traceability_missing)
+    # [LLR202-T003]
+    with pytest.raises(ValueError, match="traceability_missing"):
+        SpecObjectParser.parse(xml_object, "test", fixture_test_attribute_map, fixture_test_relation_map)
+    # [/LLR202-T003]
+
+
+def test_mapping_test_title_malformed(fixture_test_title_malformed, fixture_test_attribute_map, fixture_test_relation_map):
+
+    # parse object here
+    xml_object = etree.fromstring(fixture_test_title_malformed)
+    # [LLR206-T002]
+    with pytest.raises(ValueError, match="title_malformed"):
+        SpecObjectParser.parse(xml_object, "test", fixture_test_attribute_map, fixture_test_relation_map)
+    # [/LLR206-T002]
+
+
+def test_mapping_test_title_missing(fixture_test_title_missing, fixture_test_attribute_map, fixture_test_relation_map):
+
+    # parse object here
+    xml_object = etree.fromstring(fixture_test_title_missing)
+    # [LLR206-T003]
+    with pytest.raises(ValueError, match="title_missing"):
+        SpecObjectParser.parse(xml_object, "test", fixture_test_attribute_map, fixture_test_relation_map)
+    # [/LLR206-T003]
+
+
+def test_mapping_test_initial_condition_malformed(fixture_test_initial_condition_malformed, fixture_test_attribute_map, fixture_test_relation_map):
+
+    # parse object here
+    xml_object = etree.fromstring(fixture_test_initial_condition_malformed)
+    # [LLR204-T002]
+    with pytest.raises(ValueError, match="initial_condition_malformed"):
+        SpecObjectParser.parse(xml_object, "test", fixture_test_attribute_map, fixture_test_relation_map)
+    # [/LLR204-T002]
+
+
+def test_mapping_test_initial_condition_missing(fixture_test_initial_condition_missing, fixture_test_attribute_map, fixture_test_relation_map):
+
+    # parse object here
+    xml_object = etree.fromstring(fixture_test_initial_condition_missing)
+    # [LLR204-T003]
+    with pytest.raises(ValueError, match="initial_condition_missing"):
+        SpecObjectParser.parse(xml_object, "test", fixture_test_attribute_map, fixture_test_relation_map)
+    # [/LLR204-T003]
+
+
+def test_mapping_test_test_sequence_malformed(fixture_test_test_sequence_malformed, fixture_test_attribute_map, fixture_test_relation_map):
+
+    # parse object here
+    xml_object = etree.fromstring(fixture_test_test_sequence_malformed)
+    # [LLR208-T002]
+    with pytest.raises(ValueError, match="test_sequence_malformed"):
+        SpecObjectParser.parse(xml_object, "test", fixture_test_attribute_map, fixture_test_relation_map)
+    # [/LLR208-T002]
+
+
+def test_mapping_test_test_sequence_missing(fixture_test_test_sequence_missing, fixture_test_attribute_map, fixture_test_relation_map):
+
+    # parse object here
+    xml_object = etree.fromstring(fixture_test_test_sequence_missing)
+    # [LLR208-T003]
+    with pytest.raises(ValueError, match="test_sequence_missing"):
+        SpecObjectParser.parse(xml_object, "test", fixture_test_attribute_map, fixture_test_relation_map)
+    # [/LLR208-T003]
+
+
+def test_mapping_test_target_value_malformed(fixture_test_target_value_malformed, fixture_test_attribute_map, fixture_test_relation_map):
+
+    # parse object here
+    xml_object = etree.fromstring(fixture_test_target_value_malformed)
+    # [LLR207-T002]
+    with pytest.raises(ValueError, match="target_value_malformed"):
+        SpecObjectParser.parse(xml_object, "test", fixture_test_attribute_map, fixture_test_relation_map)
+    # [/LLR207-T002]
+
+
+def test_mapping_test_target_value_missing(fixture_test_target_value_missing, fixture_test_attribute_map, fixture_test_relation_map):
+
+    # parse object here
+    xml_object = etree.fromstring(fixture_test_target_value_missing)
+    # [LLR207-T003]
+    with pytest.raises(ValueError, match="target_value_missing"):
+        SpecObjectParser.parse(xml_object, "test", fixture_test_attribute_map, fixture_test_relation_map)
+    # [/LLR207-T003]
+
+
+def test_mapping_test_status_malformed(fixture_test_status_malformed, fixture_test_attribute_map, fixture_test_relation_map):
+
+    # parse object here
+    xml_object = etree.fromstring(fixture_test_status_malformed)
+    # [LLR205-T002]
+    with pytest.raises(ValueError, match="status_malformed"):
+        SpecObjectParser.parse(xml_object, "test", fixture_test_attribute_map, fixture_test_relation_map)
+    # [/LLR205-T002]
+
+
+
+
+
+
+
