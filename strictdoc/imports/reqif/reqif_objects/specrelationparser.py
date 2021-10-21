@@ -49,10 +49,9 @@ class SpecRelationParser:
         print(f"SPEC-OBJECTS: {spec_objects}")
 
         spec_objects_children = list(spec_objects)
-        return spec_objects_children
+        print(spec_objects_children[1])
 
+# Todo: Filepath hardcoded!
+# file = "../../../../tests/unit/strictdoc/import/reqif/mapping_testfile.reqif"
 
-file = "Mapping_testfile.reqif"
-
-SpecRelationParser.parse(file)
-reqif.ReqIFImport.import_from_file(file)
+# SpecRelationParser.parse(file)
