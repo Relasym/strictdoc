@@ -8,7 +8,7 @@ from strictdoc.backend.dsl.models.document import Document
 from strictdoc.backend.dsl.models.document_config import DocumentConfig
 from strictdoc.backend.dsl.models.section import Section
 from strictdoc.backend.dsl.writer import SDWriter
-from strictdoc.imports.reqif.reqif_objects.specobject import SpecObject
+from strictdoc.imports.reqif.reqif_objects.specobjectparser import SpecObjectParser
 
 
 class Level:
