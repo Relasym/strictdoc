@@ -8,7 +8,6 @@ pytest_plugins = [
 ]
 
 
-
 def test_mapping_functional_uid_positive(fixture_functional_correctreqifobject, fixture_functional_attribute_map,
                                          fixture_functional_relation_map):
     object_string_pos = fixture_functional_correctreqifobject
