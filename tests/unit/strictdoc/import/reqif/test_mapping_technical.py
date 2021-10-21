@@ -7,7 +7,7 @@ pytest_plugins = [
 ]
 
 
-def test_mapping_technical_uid(fixture_technical_uid, fixture_technical_attribute_map,
+def test_mapping_technical_uid_positive(fixture_technical_uid, fixture_technical_attribute_map,
                                fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_uid)
@@ -41,7 +41,7 @@ def test_mapping_technical_uid_missing(fixture_technical_uid_missing, fixture_te
     # [/LLR204]
 
 
-def test_mapping_technical_allocation_to_component(fixture_technical_allocation_to_component,
+def test_mapping_technical_allocation_to_component_positive(fixture_technical_allocation_to_component,
                                                    fixture_technical_attribute_map,
                                                    fixture_technical_relation_map):
     # parse object here
@@ -67,7 +67,7 @@ def test_mapping_technical_allocation_to_component_malformed(fixture_technical_a
     # [/LLR204]
 
 
-def test_mapping_technical_asil(fixture_technical_asil, fixture_technical_attribute_map,
+def test_mapping_technical_asil_positive(fixture_technical_asil, fixture_technical_attribute_map,
                                 fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_asil)
@@ -91,7 +91,7 @@ def test_mapping_technical_asil_malformed(fixture_technical_asil_malformed, fixt
     # [/LLR204]
 
 
-def test_mapping_technical_status(fixture_technical_status, fixture_technical_attribute_map,
+def test_mapping_technical_status_positive(fixture_technical_status, fixture_technical_attribute_map,
                                   fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_status)
@@ -115,7 +115,7 @@ def test_mapping_technical_status_malformed(fixture_technical_status_malformed, 
     # [/LLR204]
 
 
-def test_mapping_technical_target_value(fixture_technical_target_value, fixture_technical_attribute_map,
+def test_mapping_technical_target_value_positive(fixture_technical_target_value, fixture_technical_attribute_map,
                                         fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_target_value)
@@ -149,7 +149,7 @@ def test_mapping_technical_target_value_missing(fixture_technical_target_value_m
     # [/LLR204]
 
 
-def test_mapping_technical_technical_description(fixture_technical_technical_description,
+def test_mapping_technical_technical_description_positive(fixture_technical_technical_description,
                                                  fixture_technical_attribute_map,
                                                  fixture_technical_relation_map):
     # parse object here
@@ -187,7 +187,7 @@ def test_mapping_technical_technical_description_missing(fixture_technical_techn
     # [/LLR204]
 
 
-def test_mapping_technical_comment(fixture_technical_comment, fixture_technical_attribute_map,
+def test_mapping_technical_comment_positive(fixture_technical_comment, fixture_technical_attribute_map,
                                    fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_comment)

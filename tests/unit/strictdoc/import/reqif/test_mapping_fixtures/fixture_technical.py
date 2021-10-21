@@ -220,7 +220,7 @@ def fixture_technical_allocation_to_component_malformed():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_oE860C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="'"'">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="'!"'">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
