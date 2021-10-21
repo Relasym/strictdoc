@@ -8,7 +8,6 @@ pytest_plugins = [
 ]
 
 
-
 def test_mapping_functional_uid_positive(fixture_functional_correctreqifobject, fixture_functional_attribute_map,
                                          fixture_functional_relation_map):
     object_string_pos = fixture_functional_correctreqifobject
@@ -28,7 +27,7 @@ def test_mapping_functional_uid_malformed(fixture_functional_malformed_uid, fixt
 
     # [LLR001-T002]
     with pytest.raises(ValueError, match="uid_malformed"):
-        SpecObjectParser.parse(xml_object, "TEST", fixture_functional_attribute_map,
+        SpecObjectParser.parse(xml_object, "FUNCTIONAL", fixture_functional_attribute_map,
                                fixture_functional_relation_map)
     # [/LLR001-T002]
 
@@ -40,7 +39,7 @@ def test_mapping_functional_uid_missing(fixture_functional_missing_uid, fixture_
 
     # [LLR001-T003]
     with pytest.raises(ValueError, match="uid_missing"):
-        SpecObjectParser.parse(xml_object, "TEST", fixture_functional_attribute_map,
+        SpecObjectParser.parse(xml_object, "FUNCTIONAL", fixture_functional_attribute_map,
                                fixture_functional_relation_map)
     # [/LLR001-T003]
 
@@ -57,7 +56,7 @@ def test_mapping_functional_allocation_positive(fixture_functional_correctreqifo
                                                 fixture_functional_relation_map):
     object_string_pos = fixture_functional_correctreqifobject
     xml_object = etree.fromstring(object_string_pos)
-    requirement = SpecObjectParser.parse(xml_object, "TEST", fixture_functional_attribute_map,
+    requirement = SpecObjectParser.parse(xml_object, "FUNCTIONAL", fixture_functional_attribute_map,
                                          fixture_functional_relation_map)
 
     # [LLR002-T001]
@@ -73,7 +72,7 @@ def test_mapping_functional_allocation_malformed(fixture_functional_malformed_al
 
     # [LLR002-T002]
     with pytest.raises(ValueError, match="allocation_malformed"):
-        SpecObjectParser.parse(xml_object, "TEST", fixture_functional_attribute_map,
+        SpecObjectParser.parse(xml_object, "FUNCTIONAL", fixture_functional_attribute_map,
                                fixture_functional_relation_map)
     # [/LLR002-T002]
 
@@ -82,7 +81,7 @@ def test_mapping_functional_asil_positive(fixture_functional_correctreqifobject,
                                           fixture_functional_relation_map):
     object_string_pos = fixture_functional_correctreqifobject
     xml_object = etree.fromstring(object_string_pos)
-    requirement = SpecObjectParser.parse(xml_object, "TEST", fixture_functional_attribute_map,
+    requirement = SpecObjectParser.parse(xml_object, "FUNCTIONAL", fixture_functional_attribute_map,
                                          fixture_functional_relation_map)
 
     # [LLR003-T001]
@@ -98,7 +97,7 @@ def test_mapping_functional_asil_malformed(fixture_functional_malformed_asil,
 
     # [LLR003-T002]
     with pytest.raises(ValueError, match="asil_malformed"):
-        SpecObjectParser.parse(xml_object, "TEST", fixture_functional_attribute_map,
+        SpecObjectParser.parse(xml_object, "FUNCTIONAL", fixture_functional_attribute_map,
                                fixture_functional_relation_map)
     # [/LLR003-T002]
 
@@ -107,7 +106,7 @@ def test_mapping_functional_status_positive(fixture_functional_correctreqifobjec
                                             fixture_functional_relation_map):
     object_string_pos = fixture_functional_correctreqifobject
     xml_object = etree.fromstring(object_string_pos)
-    requirement = SpecObjectParser.parse(xml_object, "TEST", fixture_functional_attribute_map,
+    requirement = SpecObjectParser.parse(xml_object, "FUNCTIONAL", fixture_functional_attribute_map,
                                          fixture_functional_relation_map)
 
     # [LLR004-T001]
@@ -123,7 +122,7 @@ def test_mapping_functional_status_malformed(fixture_functional_malformed_status
 
     # [LLR004-T002]
     with pytest.raises(ValueError, match="status_malformed"):
-        SpecObjectParser.parse(xml_object, "TEST", fixture_functional_attribute_map,
+        SpecObjectParser.parse(xml_object, "FUNCTIONAL", fixture_functional_attribute_map,
                                fixture_functional_relation_map)
     # [/LLR004-T002]
 
@@ -148,7 +147,7 @@ def test_mapping_functional_title_malformed(fixture_functional_malformed_title,
 
     # [LLR005-T002]
     with pytest.raises(ValueError, match="title_malformed"):
-        SpecObjectParser.parse(xml_object, "TEST", fixture_functional_attribute_map,
+        SpecObjectParser.parse(xml_object, "FUNCTIONAL", fixture_functional_attribute_map,
                                fixture_functional_relation_map)
     # [/LLR005-T002]
 
@@ -161,6 +160,6 @@ def test_mapping_functional_title_missing(fixture_functional_missing_title,
 
     # [LLR005-T003]
     with pytest.raises(ValueError, match="title_missing"):
-        SpecObjectParser.parse(xml_object, "TEST", fixture_functional_attribute_map,
+        SpecObjectParser.parse(xml_object, "FUNCTIONAL", fixture_functional_attribute_map,
                                fixture_functional_relation_map)
     # [/LLR005-T003]
