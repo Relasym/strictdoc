@@ -22,3 +22,6 @@ def spec_relation_object():
         </SPEC-RELATION>
       </SPEC-RELATIONS>"""
     return object_string
+
+
+
