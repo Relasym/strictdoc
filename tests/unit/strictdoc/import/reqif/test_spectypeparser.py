@@ -94,6 +94,20 @@ spectype_string_unknown_type = """<SPEC-OBJECT-TYPE IDENTIFIER="_gFhrWmojEeuExIC
 """
 spectype_unknown_type = etree.fromstring(spectype_string_unknown_type)
 
+spectype_string_attribute_malformed = """<SPEC-OBJECT-TYPE IDENTIFIER="_gFhrWmojEeuExICsU7Acmg" LAST-CHANGE="2021-02-08T16:37:07.454+01:00" LONG-NAME="Requirement Type">
+          <SPEC-ATTRIBUTES>
+            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_gFhrW2ojEeuExICsU7Acmg" LAST-CHANGE="2021-02-08T16:37:07.454+01:00" LONG-NAME="ReqIF.ForeignID">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_gFhrVGojEeuExICsU7Acmg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+            </ATTRIBUTE-DEFINITION-STRING>
+            <ATTRIBUTE-DEFINITION-STRING DESC="Testattribute" IDENTIFIER="_aqZG4GxpEeuaU7fHySy8Bw" LAST-CHANGE="2021-02-11T14:02:05.129+01:00" LONG-NAME="NOTES" IS-EDITABLE="true">
+            </ATTRIBUTE-DEFINITION-STRING>
+          </SPEC-ATTRIBUTES>
+        </SPEC-OBJECT-TYPE>
+"""
+spectype_attribute_malformed = etree.fromstring(spectype_string)
+
 
 def test_get_id():
     spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype)
@@ -129,3 +143,8 @@ def test_get_type_no_type():
 def test_get_type_unknown_type():
     with pytest.raises(ValueError, match="type_unknown"):
         spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype_unknown_type)
+
+
+def test_get_attribute_map_malformed_attribute():
+    with pytest.raises(ValueError, match="attribute_malformed"):
+        spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype_attribute_malformed)
