@@ -45,7 +45,7 @@ SPECIAL_FIELDS:
   TARGET_VALUE: UID
 REFS:
 - TYPE: Parent
-  VALUE: HL401
+  VALUE: HLR401
 TITLE: The SpecTypeParser shall parse an Etree Element (SpecType) and return the ID. If the ID is missing or malformed, an Error shall be raised.
 COMMENT: >>>
 no comment
@@ -102,7 +102,7 @@ SPECIAL_FIELDS:
   TARGET_VALUE: UID
 REFS:
 - TYPE: Parent
-  VALUE: HL401
+  VALUE: HLR401
 TITLE: The SpecTypeParser shall parse an Etree Element (SpecTypes) and return the type.
 COMMENT: >>>
 no comment
@@ -159,7 +159,7 @@ SPECIAL_FIELDS:
   TARGET_VALUE: UID
 REFS:
 - TYPE: Parent
-  VALUE: HL401
+  VALUE: HLR401
 TITLE: The SpecTypeParser shall parse an Etree Element (SpecTypes) and return the attribube Map.
 COMMENT: >>>
 no comment
