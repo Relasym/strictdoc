@@ -1,0 +1,41 @@
+[DOCUMENT]
+TITLE: SDoc Requirements
+SPECIAL_FIELDS:
+- NAME: ALLOCATION
+  TYPE: String
+- NAME: ASIL
+  TYPE: String
+- NAME: TARGET_VALUE
+  TYPE: String
+- NAME: ALLOCATION_TO_COMPONENT
+  TYPE: String
+- NAME: TYPE
+  TYPE: String
+- NAME: INITIAL_CONDITION
+  TYPE: String
+- NAME: TEST_SEQUENCE
+  TYPE: String
+- NAME: REFERENCE
+  TYPE: String
+
+[FREETEXT]
+Defining the technical tests for mapping from ReqIf files to SDOC
+[/FREETEXT]
+
+[SECTION]
+TITLE: Mapping functional requirements
+
+[REQUIREMENT]
+UID: SR001
+STATUS: Draft
+TITLE: The import function shall import a .reqif file and convert it to an .sdoc file.
+
+[REQUIREMENT]
+UID: HLR010
+STATUS: Draft
+REFS:
+- TYPE: Parent
+  VALUE: SR001
+TITLE: The import function shall import a SpecObject from the .reqif file.
+
+[/SECTION]
