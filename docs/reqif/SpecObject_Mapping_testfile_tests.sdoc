@@ -34,7 +34,7 @@ SPECIAL_FIELDS:
 REFS:
 - TYPE: Parent
   VALUE: HLR010
-TITLE: The import function shall import a SpecObject from the .reqif file.
+TITLE: The SpecObjectParser shall map test requirements
 
 [REQUIREMENT]
 UID: LLR201
