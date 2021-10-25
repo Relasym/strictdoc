@@ -1,3 +1,4 @@
+import time
 from xml.etree import ElementTree as etree
 
 from strictdoc.backend.dsl.models.requirement import Requirement
@@ -31,15 +32,16 @@ class SpecObjectParser:
     #       initial_condition = {self.initial_condition}, test_sequence = {self.test_sequence},
     #       target_value = {self.target_value}, reference = {self.reference},
     #       allocation_to_component = {self.allocation_to_component}, comment = {self.comment},
-    #       technical_description = {self.technical_description}, functional_description = {self.functional_description})"""
+    #       technical_description = {self.technical_description},
+    #       functional_description = {self.functional_description})"""
     #
     #   def __repr__(self):
     #       return str(self)
 
-    # def parse(element, type, attributes_map, relation_map):
+    # def parse(element, element_type, attributes_map, relation_map):
 
     @staticmethod
-    def parse(element, type, attribute_map):
+    def parse(element, element_type, attribute_map):
         # check if value contains ' or "; if yes, raise an error; if no, append to list
         value_list = []
         for elem in element[0]:
@@ -47,69 +49,68 @@ class SpecObjectParser:
                 if char == '"' or char == "'" or char == "/":
                     raise ValueError("Attribute_contains_illegal_character")
             value_list.append(elem.attrib["THE-VALUE"])
-        print(value_list)
 
         # append all identifiers from the spec object to an empty list
         identifier_list = []
         for identifier in element[0]:
             identifier_list.append(identifier[0][0].text)
-        print(identifier_list)
 
         # check if all identifiers from attibute_map(from spec object type)
         # are in identifier_list(from spec object) and reversed
-        # if not, raise ValueError
+        # if not, raise ValueError;
+        # ToDo make check of identifiers faster?
         identifier_counter = 0
         for identifier in identifier_list:
             for key in attribute_map:
                 if identifier == key:
                     identifier_counter += 1
         if len(identifier_list) != identifier_counter or len(attribute_map) != identifier_counter:
-            raise ValueError("SpecObject_Identifiers_not_congruent")
+            raise ValueError("SpecObject_identifiers_not_congruent")
 
         # dict with attribute names and corresponding identifiers
         value_number = 0
         dict_attribute_value = {}
         for identifier in identifier_list:
-            for attribute in attribute_map:
-                if identifier == attribute:
-                    dict_attribute_value[attribute_map[attribute]] = value_list[value_number]
-                    value_number += 1
-        print(dict_attribute_value)
+            dict_attribute_value[attribute_map[identifier]] = value_list[value_number]
+            value_number += 1
 
-        # MISSING - check for missing
-        # MISSING - initialize requirement object and assign values
+        # value_list        ['LLR001-T001', 'true'
+        # identifier_list   ['_BSKKIS2GEeyvlO4vtsM_UA', '_a5wPYC2GEeyvlO4vtsM_UA',
+        # attributes_map    {"_BSKKIS2GEeyvlO4vtsM_UA": "requirement_ID",
+        #                   "_BSKKJC2GEeyvlO4vtsM_UA": "type",
 
-        # UserWarning or ValueError??
+        # check if values in attribute asil are correct asil values
+        asil_values = ("ASIL A", "ASIL B", "ASIL C", "ASIL D",
+                       "ASIL-A", "ASIL-B", "ASIL-C", "ASIL-D",
+                       "A", "B", "C", "D", "QM")
+        if element_type == "functional" or element_type == "technical":
+            if dict_attribute_value["asil"] not in asil_values:
+                raise ValueError("Attribute_asil_contains_no_asil_value")
 
-        if type == "test":
+        # check for missing attribute values in predefined spectypes
+        if element_type == "test":
             for attribute in dict_attribute_value:
                 if dict_attribute_value[attribute] == "":
-                    if attribute != "status":
-                        raise UserWarning
+                    if attribute != "type" and attribute != "status":
+                        raise ValueError("Required_attribute_missing")
+            # initialize requirement object and assign values
+            # requirement = Requirement()
 
-        if type == "technical":
+        if element_type == "technical":
             for attribute in dict_attribute_value:
                 if dict_attribute_value[attribute] == "":
-                    if attribute == "status" or attribute == "relation" or attribute == "technical_description":
-                        raise UserWarning
-                    # if  format raise exc
+                    if attribute == "requirement_id" or attribute == "relation" or attribute == "technical_description":
+                        raise ValueError("Required_attribute_missing")
+            # initialize requirement object and assign values
+            # requirement = Requirement()
 
-        if type == "technical":
+        if element_type == "functional":
             for attribute in dict_attribute_value:
                 if dict_attribute_value[attribute] == "":
-                    if attribute == "status" or attribute == "technical_description":
-                        raise UserWarning
-                    # if  format raise exc
-
-        """for(attributes):
-            get values;
-            specobject.value = value
-        check attributes;
-        if technical attributes -> specobject.type = technical
-        if functional attr...;
-        if other attr or attr missing -> parse_all
-        """
+                    if attribute == "requirement_id" or attribute == "functional_description":
+                        raise ValueError("Required_attribute_missing")
+            # initialize requirement object and assign values
+            # requirement = Requirement()
 
         return Requirement("Type", "UID", "Content", "Status", 'status', 'tags', 'references', 'title', 'body',
                            'rationale', 'rationale_multiline', 'comments', 'special_fields')
-
