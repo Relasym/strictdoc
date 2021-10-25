@@ -1,0 +1,39 @@
+[DOCUMENT]
+TITLE: SpecHierarchyParser Requirements
+SPECIAL_FIELDS:
+- NAME: ALLOCATION
+  TYPE: String
+- NAME: ASIL
+  TYPE: String
+- NAME: TARGET_VALUE
+  TYPE: String
+- NAME: ALLOCATION_TO_COMPONENT
+  TYPE: String
+- NAME: TYPE
+  TYPE: String
+- NAME: INITIAL_CONDITION
+  TYPE: String
+- NAME: TEST_SEQUENCE
+  TYPE: String
+- NAME: REFERENCE
+  TYPE: String
+
+[FREETEXT]
+Defining the Requirements for the SpecHierarchyParser
+[/FREETEXT]
+
+[SECTION]
+TITLE: Requirements
+
+[REQUIREMENT]
+UID: HLR501
+STATUS: Draft
+SPECIAL_FIELDS:
+  ALLOCATION: Software
+  ASIL: none
+REFS:
+- TYPE: Parent
+  VALUE: SR001
+TITLE: The SpecHierarchyParser shall parse the <Specification> xml Object and return a map representing requirement links. Key: Child, Value: Parent.
+
+[/SECTION]
