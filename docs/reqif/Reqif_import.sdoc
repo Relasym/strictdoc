@@ -34,6 +34,19 @@ SPECIAL_FIELDS:
 TITLE: The import function shall import a .reqif file and convert it to an .sdoc file.
 
 [REQUIREMENT]
+UID: SR001-T001
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: A .Reqif file containing requirements and a .sdoc file containing the same requirements.
+  TEST_SEQUENCE: The .reqif file shall be imported and the resulting .sdoc file compared the the known .sdoc file.
+  TARGET_VALUE: Known, pre-converted .sdoc file
+REFS:
+- TYPE: Parent
+  VALUE: SR001
+TITLE: Test that importing a full .reqif file results in the correct .sdoc file.
+
+[REQUIREMENT]
 UID: HLR010
 STATUS: Draft
 SPECIAL_FIELDS:
