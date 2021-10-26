@@ -4,7 +4,7 @@ import pytest
 
 from strictdoc.imports.reqif.reqif_objects.spectype_parser import SpectypeParser
 
-spectype_string = """<SPEC-OBJECT-TYPE IDENTIFIER="_gFhrWmojEeuExICsU7Acmg" LAST-CHANGE="2021-02-08T16:37:07.454+01:00" LONG-NAME="Requirement Type">
+spectype_string = """<SPEC-OBJECT-TYPE IDENTIFIER="_gFhrWmojEeuExICsU7Acmg" LAST-CHANGE="2021-02-08T16:37:07.454+01:00" LONG-NAME="FUNCTIONAL">
           <SPEC-ATTRIBUTES>
             <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_gFhrW2ojEeuExICsU7Acmg" LAST-CHANGE="2021-02-08T16:37:07.454+01:00" LONG-NAME="ReqIF.ForeignID">
               <TYPE>
@@ -22,7 +22,7 @@ spectype_string = """<SPEC-OBJECT-TYPE IDENTIFIER="_gFhrWmojEeuExICsU7Acmg" LAST
 """
 spectype = etree.fromstring(spectype_string)
 
-spectype_string_no_id = """<SPEC-OBJECT-TYPE IDENTIFIER="_gFhrWmojEeuExICsU7Acmg" LAST-CHANGE="2021-02-08T16:37:07.454+01:00" LONG-NAME="Requirement Type">
+spectype_string_no_id = """<SPEC-OBJECT-TYPE LAST-CHANGE="2021-02-08T16:37:07.454+01:00" LONG-NAME="FUNCTIONAL">
           <SPEC-ATTRIBUTES>
             <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="" LAST-CHANGE="2021-02-08T16:37:07.454+01:00" LONG-NAME="ReqIF.ForeignID">
               <TYPE>
@@ -40,7 +40,7 @@ spectype_string_no_id = """<SPEC-OBJECT-TYPE IDENTIFIER="_gFhrWmojEeuExICsU7Acmg
 """
 spectype_no_id = etree.fromstring(spectype_string_no_id)
 
-spectype_string_id_malformed = """<SPEC-OBJECT-TYPE IDENTIFIER="\n\\nnnn\\???!" LAST-CHANGE="2021-02-08T16:37:07.454+01:00" LONG-NAME="Requirement Type">
+spectype_string_id_malformed = """<SPEC-OBJECT-TYPE IDENTIFIER="\n\\nnnn\\???!" LAST-CHANGE="2021-02-08T16:37:07.454+01:00" LONG-NAME="FUNCTIONAL">
           <SPEC-ATTRIBUTES>
             <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_gFhrW2ojEeuExICsU7Acmg" LAST-CHANGE="2021-02-08T16:37:07.454+01:00" LONG-NAME="ReqIF.ForeignID">
               <TYPE>
@@ -94,19 +94,23 @@ spectype_string_unknown_type = """<SPEC-OBJECT-TYPE IDENTIFIER="_gFhrWmojEeuExIC
 """
 spectype_unknown_type = etree.fromstring(spectype_string_unknown_type)
 
-spectype_string_attribute_malformed = """<SPEC-OBJECT-TYPE IDENTIFIER="_gFhrWmojEeuExICsU7Acmg" LAST-CHANGE="2021-02-08T16:37:07.454+01:00" LONG-NAME="Requirement Type">
+spectype_string_attribute_malformed = """<SPEC-OBJECT-TYPE IDENTIFIER="_gFhrWmojEeuExICsU7Acmg" LAST-CHANGE="2021-02-08T16:37:07.454+01:00" LONG-NAME="FUNCTIONAL">
           <SPEC-ATTRIBUTES>
-            <ATTRIBUTE-DEFINITION-STRING IDENTIFIER="_gFhrW2ojEeuExICsU7Acmg" LAST-CHANGE="2021-02-08T16:37:07.454+01:00" LONG-NAME="ReqIF.ForeignID">
+
               <TYPE>
                 <DATATYPE-DEFINITION-STRING-REF>_gFhrVGojEeuExICsU7Acmg</DATATYPE-DEFINITION-STRING-REF>
               </TYPE>
-            </ATTRIBUTE-DEFINITION-STRING>
+
             <ATTRIBUTE-DEFINITION-STRING DESC="Testattribute" IDENTIFIER="_aqZG4GxpEeuaU7fHySy8Bw" LAST-CHANGE="2021-02-11T14:02:05.129+01:00" LONG-NAME="NOTES" IS-EDITABLE="true">
+              <TYPE>
+                <DATATYPE-DEFINITION-STRING-REF>_gFhrU2ojEeuExICsU7Acmg</DATATYPE-DEFINITION-STRING-REF>
+              </TYPE>
+              <DEFAULT-VALUE/>
             </ATTRIBUTE-DEFINITION-STRING>
           </SPEC-ATTRIBUTES>
         </SPEC-OBJECT-TYPE>
 """
-spectype_attribute_malformed = etree.fromstring(spectype_string)
+spectype_attribute_malformed = etree.fromstring(spectype_string_attribute_malformed)
 
 
 def test_get_id():
@@ -116,12 +120,12 @@ def test_get_id():
 
 def test_get_type():
     spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype)
-    assert (spectype_type == "Requirement Type")
+    assert (spectype_type == "FUNCTIONAL")
 
 
 def test_get_attribute_map():
     spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype)
-    assert (attribute_map.get("ReqIF.ForeignID") == "_gFhrXGojEeuExICsU7Acmg")
+    assert (attribute_map.get("ReqIF.ForeignID") == "_gFhrW2ojEeuExICsU7Acmg")
     assert (attribute_map.get("NOTES") == "_aqZG4GxpEeuaU7fHySy8Bw")
 
 
@@ -141,7 +145,7 @@ def test_get_type_no_type():
 
 
 def test_get_type_unknown_type():
-    with pytest.raises(ValueError, match="type_unknown"):
+    with pytest.raises(ValueError, match="unknown_type"):
         spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype_unknown_type)
 
 
