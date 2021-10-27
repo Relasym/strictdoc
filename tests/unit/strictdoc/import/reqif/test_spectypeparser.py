@@ -113,6 +113,15 @@ spectype_string_attribute_malformed = """<SPEC-OBJECT-TYPE IDENTIFIER="_gFhrWmoj
 spectype_attribute_malformed = etree.fromstring(spectype_string_attribute_malformed)
 
 
+def test_spectypeparser():
+    spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype)
+    assert (spectype_id == "_gFhrWmojEeuExICsU7Acmg")
+    assert (spectype_type == "FUNCTIONAL")
+    assert (len(attribute_map) == 2)
+    assert (attribute_map.get("ReqIF.ForeignID") == "_gFhrW2ojEeuExICsU7Acmg")
+    assert (attribute_map.get("NOTES") == "_aqZG4GxpEeuaU7fHySy8Bw")
+
+
 def test_get_id():
     spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype)
     assert (spectype_id == "_gFhrWmojEeuExICsU7Acmg")
