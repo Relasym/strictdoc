@@ -47,7 +47,7 @@ REFS:
 - TYPE: Parent
   VALUE: HLR401
 - TYPE: File
-  VALUE: ..\tests\unit\strictdoc\import\reqif\test_spectypeparser.py
+  VALUE: tests\unit\strictdoc\import\reqif\test_spectypeparser.py
 TITLE: Test that parsing a correct SpecObject returns all correct Values.
 
 [REQUIREMENT]
@@ -76,7 +76,7 @@ REFS:
 - TYPE: Parent
   VALUE: LLR401
 - TYPE: File
-  VALUE: ..\tests\unit\strictdoc\import\reqif\test_spectypeparser.py
+  VALUE: tests\unit\strictdoc\import\reqif\test_spectypeparser.py
 TITLE: Test that parsing a correct SpecObject returns the correct ID.
 
 [REQUIREMENT]
@@ -90,7 +90,7 @@ REFS:
 - TYPE: Parent
   VALUE: LLR401
 - TYPE: File
-  VALUE: ..\tests\unit\strictdoc\import\reqif\test_spectypeparser.py
+  VALUE: tests\unit\strictdoc\import\reqif\test_spectypeparser.py
 TITLE: Test that parsing a SpecObject without an ID raises a ValueError("id_missing").
 
 [REQUIREMENT]
@@ -104,7 +104,7 @@ REFS:
 - TYPE: Parent
   VALUE: LLR401
 - TYPE: File
-  VALUE: ..\tests\unit\strictdoc\import\reqif\test_spectypeparser.py
+  VALUE: tests\unit\strictdoc\import\reqif\test_spectypeparser.py
 TITLE: Test that parsing a SpecObject with a malformed ID raises a ValueError("id_malformed").
 
 [REQUIREMENT]
@@ -133,7 +133,7 @@ REFS:
 - TYPE: Parent
   VALUE: LLR402
 - TYPE: File
-  VALUE: ..\tests\unit\strictdoc\import\reqif\test_spectypeparser.py
+  VALUE: tests\unit\strictdoc\import\reqif\test_spectypeparser.py
 TITLE: Test that parsing a correct SpecObject returns the correct type.
 
 [REQUIREMENT]
@@ -147,7 +147,7 @@ REFS:
 - TYPE: Parent
   VALUE: LLR402
 - TYPE: File
-  VALUE: ..\tests\unit\strictdoc\import\reqif\test_spectypeparser.py
+  VALUE: tests\unit\strictdoc\import\reqif\test_spectypeparser.py
 TITLE: Test that parsing a SpecObject without a type raises a ValueError("type_missing").
 
 [REQUIREMENT]
@@ -161,7 +161,7 @@ REFS:
 - TYPE: Parent
   VALUE: LLR402
 - TYPE: File
-  VALUE: ..\tests\unit\strictdoc\import\reqif\test_spectypeparser.py
+  VALUE: tests\unit\strictdoc\import\reqif\test_spectypeparser.py
 TITLE: Test that parsing a SpecObject with a malformed type raises a ValueError("id_malformed").
 
 [REQUIREMENT]
@@ -190,7 +190,7 @@ REFS:
 - TYPE: Parent
   VALUE: LLR403
 - TYPE: File
-  VALUE: ..\tests\unit\strictdoc\import\reqif\test_spectypeparser.py
+  VALUE: tests\unit\strictdoc\import\reqif\test_spectypeparser.py
 TITLE: Test that parsing a correct SpecObject returns the correct map.
 
 [REQUIREMENT]
@@ -204,7 +204,7 @@ REFS:
 - TYPE: Parent
   VALUE: LLR403
 - TYPE: File
-  VALUE: ..\tests\unit\strictdoc\import\reqif\test_spectypeparser.py
+  VALUE: tests\unit\strictdoc\import\reqif\test_spectypeparser.py
 TITLE: Test that parsing a SpecObject with a malformed attribute raises a ValueError("attribute_malformed").
 
 [/SECTION]
