@@ -2,6 +2,7 @@ import time
 from xml.etree import ElementTree as etree
 
 from strictdoc.backend.dsl.models.requirement import Requirement
+from strictdoc.backend.dsl.models.special_field import SpecialField
 
 
 class SpecObjectParser:
@@ -73,7 +74,7 @@ class SpecObjectParser:
         for identifier in identifier_list:
             dict_attribute_value[attribute_map[identifier]] = value_list[value_number]
             value_number += 1
-
+        print(dict_attribute_value)
         # value_list        ['LLR001-T001', 'true'
         # identifier_list   ['_BSKKIS2GEeyvlO4vtsM_UA', '_a5wPYC2GEeyvlO4vtsM_UA',
         # attributes_map    {"_BSKKIS2GEeyvlO4vtsM_UA": "requirement_ID",
@@ -94,7 +95,9 @@ class SpecObjectParser:
                     if attribute != "type" and attribute != "status":
                         raise ValueError("Required_attribute_missing")
             # initialize requirement object and assign values
-            # requirement = Requirement()
+            requirement = Requirement(uid=dict_attribute_value["requirement_ID"], title=dict_attribute_value["title"],
+                                      status=dict_attribute_value["status"], references=dict_attribute_value["traceability"],
+                                      )
 
         if element_type == "technical":
             for attribute in dict_attribute_value:
@@ -109,8 +112,20 @@ class SpecObjectParser:
                 if dict_attribute_value[attribute] == "":
                     if attribute == "requirement_id" or attribute == "functional_description":
                         raise ValueError("Required_attribute_missing")
+            # initialize special fields
+            """special_field_type = SpecialField(dict_attribute_value["requirement_ID"], "type",
+                                              dict_attribute_value["type"])
+            special_field_initial_condition = SpecialField(dict_attribute_value["requirement_ID"], "initial_condition",
+                                                           dict_attribute_value["initial_condition"])
+            special_field_test_sequence = SpecialField(dict_attribute_value["requirement_ID"], "test_sequence",
+                                                       dict_attribute_value["test_sequence"])
+            special_field_target_value = SpecialField(dict_attribute_value["requirement_ID"], "target_value",
+                                                      dict_attribute_value["target_value"])"""
             # initialize requirement object and assign values
-            # requirement = Requirement()
+            requirement = Requirement(uid=dict_attribute_value["requirement_ID"],
+                                      status=dict_attribute_value["status"])
+            # requirement.requirement_from_dict(dict_attribute_value, dict_attribute_value["requirement_ID"])
 
         return Requirement("Type", "UID", "Content", "Status", 'status', 'tags', 'references', 'title', 'body',
                            'rationale', 'rationale_multiline', 'comments', 'special_fields')
+
