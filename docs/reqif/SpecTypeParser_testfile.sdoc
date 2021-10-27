@@ -37,6 +37,20 @@ REFS:
 TITLE: The SpecTypeParser shall parse an Etree Element (SpecType) and return the data necessary for parsing of this type of SpecObjects. (String SpecType_ID, String Type, Map (String Attribute Name -> String Attribute ID))
 
 [REQUIREMENT]
+UID: HLR401-T001
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: An Etree Element containing a SPEC-OBJECT-TYPE xml object
+  TEST_SEQUENCE: The Element is parsed by the Parser and returns the relevant values. The returned SpecType ID, Type and map are compared to the correct values.
+  TARGET_VALUE: known SpecType ID from the xml object
+REFS:
+- TYPE: Parent
+  VALUE: HLR401
+- TYPE: File
+  VALUE: ..\tests\unit\strictdoc\import\reqif\test_spectypeparser.py
+TITLE: Test that parsing a correct SpecObject returns all correct Values.
+
+[REQUIREMENT]
 UID: LLR401
 STATUS: Draft
 SPECIAL_FIELDS:
