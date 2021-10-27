@@ -2,10 +2,10 @@ from xml.etree import ElementTree as etree
 from strictdoc.imports.reqif.reqif_objects.specrelationparser import SpecRelationParser
 import pytest
 
-specrelation_string_map = r"""      <SPEC-RELATIONS>
+specrelations_Object_string = r"""<SPEC-RELATIONS>
         <SPEC-RELATION IDENTIFIER="_rFhEcDJJEeyeXuftE5Q6Cw" LAST-CHANGE="2021-10-21T10:34:11.458+02:00">
           <TARGET>
-            <SPEC-OBJECT-REF>_lLoc8C2IEeyvlO4vtsM_UA</SPEC-OBJECT-REF>
+            <SPEC-OBJECT-REF>_lLoc8C2-IEeyvlO4.vtsM_UA</SPEC-OBJECT-REF>
           </TARGET>
           <SOURCE>
             <SPEC-OBJECT-REF>_eDO24C2IEeyvlO4vtsM_UA</SPEC-OBJECT-REF>
@@ -15,9 +15,9 @@ specrelation_string_map = r"""      <SPEC-RELATIONS>
           </TYPE>
         </SPEC-RELATION>
       </SPEC-RELATIONS>"""
-specrelation_map = etree.fromstring(specrelation_string_map)
+specrelations_Object = etree.fromstring(specrelations_Object_string)
 
-specrelation_string_invalidID = r"""      <SPEC-RELATIONS>
+specrelation_string_invalidID = r"""<SPEC-RELATIONS>
         <SPEC-RELATION IDENTIFIER="_rFhEcDJJEeyeXuftE5Q6Cw" LAST-CHANGE="2021-10-21T10:34:11.458+02:00">
           <TARGET>
             <SPEC-OBJECT-REF>_l%Loc8C2IE?e:vlO4!vtsM_UA</SPEC-OBJECT-REF>
@@ -32,7 +32,7 @@ specrelation_string_invalidID = r"""      <SPEC-RELATIONS>
       </SPEC-RELATIONS>"""
 specrelations_invalidID = etree.fromstring(specrelation_string_invalidID)
 
-specrelation_string_missingID = r"""      <SPEC-RELATIONS>
+specrelation_string_missingID = r"""<SPEC-RELATIONS>
         <SPEC-RELATION IDENTIFIER="_rFhEcDJJEeyeXuftE5Q6Cw" LAST-CHANGE="2021-10-21T10:34:11.458+02:00">
           <TARGET>
             <SPEC-OBJECT-REF></SPEC-OBJECT-REF>
@@ -50,7 +50,9 @@ specrelations_missingID = etree.fromstring(specrelation_string_missingID)
 
 # [LLR301-T001]
 def test_specrelationparser_positive():
-    assert (specrelation_map["_eDO24C2IEeyvlO4vtsM_UA"] == "_lLoc8C2IEeyvlO4vtsM_UA")
+    relation_map = SpecRelationParser.parse(specrelations_Object)
+
+    assert (relation_map["_eDO24C2IEeyvlO4vtsM_UA"] == "_lLoc8C2-IEeyvlO4.vtsM_UA")
 
 
 # [/LLR301-T001]

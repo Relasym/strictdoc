@@ -1,32 +1,38 @@
-# Todo: Implement ParserFunction
 import re
-from io import StringIO
-from typing import List
-from xml.etree import ElementTree as eTree
 from xml.etree.ElementTree import Element
-from strictdoc.imports.reqif import reqif
 
 
 class SpecRelationParser:
-    """currently no method"""
 
     @staticmethod
-    def parse(specrelation):
-        # ToDo: No definition of Target and Source!!
-        """I can´t do anything!"""
-        relation_map  = {}
+    def parse(specrelations):
+        """Creates a Map of Child/Parent Links from an eTree Element,
+        containing an SpecRelation ReqIF"""
 
-# file = "../../../../tests/unit/strictdoc/import/reqif/mapping_testfile.reqif"
+        specrelation_list = list(specrelations)
+        relation_map = {}
+        for relation in specrelation_list:
+            relation: Element
+            specobjectref: Element
+            children = list(relation)
+            target = children[0]
+            specobjectref = list(target)[0]
+            value_ID = specobjectref.text
 
+            source = children[1]
+            specobjectref = list(source)[0]
+            key_ID = specobjectref.text
 
-# https://www.geeksforgeeks.org/python-program-check-string-contains-special-character/
-#
-# file
-#     spec-relations
-#
-#         spec-relation
-#             source
-#             target
-#
-# for invalid ID: Identifier contains "_ - . A-Z a-z 0-9"
+            if value_ID == None:
+                raise ValueError("specrelations_missingID")
+            if key_ID == None:
+                raise ValueError("specrelations_missingID")
 
+            regex_search = re.compile("^[a-zA-Z0-9_\-.]+$")
+            if not regex_search.match(key_ID):
+                raise ValueError("specrelations_invalidID")
+            if not regex_search.match(value_ID):
+                raise ValueError("specrelations_invalidID")
+
+            relation_map[key_ID] = value_ID
+        return relation_map

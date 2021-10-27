@@ -3495,7 +3495,9 @@
       <SPEC-RELATIONS>
         <SPEC-RELATION IDENTIFIER="_rFhEcDJJEeyeXuftE5Q6Cw" LAST-CHANGE="2021-10-21T10:34:11.458+02:00">
           <TARGET>
-            <SPEC-OBJECT-REF>_lLoc8C2IEeyvlO4vtsM_UA</SPEC-OBJECT-REF>
+            <SPEC-OBJECT-REF>
+              _lLoc8C2IEeyvlO4vtsM_UA
+            </SPEC-OBJECT-REF>
           </TARGET>
           <SOURCE>
             <SPEC-OBJECT-REF>_eDO24C2IEeyvlO4vtsM_UA</SPEC-OBJECT-REF>
