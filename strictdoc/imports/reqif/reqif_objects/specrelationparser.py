@@ -55,3 +55,15 @@ class SpecRelationParser:
 # file = "../../../../tests/unit/strictdoc/import/reqif/mapping_testfile.reqif"
 
 # SpecRelationParser.parse(file)
+
+# https://www.geeksforgeeks.org/python-program-check-string-contains-special-character/
+#
+# file
+#     spec-relations
+#
+#         spec-relation
+#             source
+#             target
+#
+# Identifier contains "_ - . A-Z a-z 0-9"
+
