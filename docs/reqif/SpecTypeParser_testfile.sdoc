@@ -34,6 +34,8 @@ SPECIAL_FIELDS:
 REFS:
 - TYPE: Parent
   VALUE: SR001
+- TYPE: File
+  VALUE: strictdoc/imports/reqif/reqif_objects/spectype_parser.py
 TITLE: The SpecTypeParser shall parse an Etree Element (SpecType) and return the data necessary for parsing of this type of SpecObjects. (String SpecType_ID, String Type, Map (String Attribute Name -> String Attribute ID))
 
 [REQUIREMENT]

@@ -112,7 +112,7 @@ spectype_string_attribute_malformed = """<SPEC-OBJECT-TYPE IDENTIFIER="_gFhrWmoj
 """
 spectype_attribute_malformed = etree.fromstring(spectype_string_attribute_malformed)
 
-
+# [HLR401-T001]
 def test_spectypeparser():
     spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype)
     assert (spectype_id == "_gFhrWmojEeuExICsU7Acmg")
@@ -120,44 +120,53 @@ def test_spectypeparser():
     assert (len(attribute_map) == 2)
     assert (attribute_map.get("ReqIF.ForeignID") == "_gFhrW2ojEeuExICsU7Acmg")
     assert (attribute_map.get("NOTES") == "_aqZG4GxpEeuaU7fHySy8Bw")
+# [/HLR401-T001]
 
-
+# [/LLR401-T001]
 def test_get_id():
     spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype)
     assert (spectype_id == "_gFhrWmojEeuExICsU7Acmg")
+# [/LLR401-T001]
 
-
+# [LLR402-T001]
 def test_get_type():
     spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype)
     assert (spectype_type == "FUNCTIONAL")
+# [/LLR402-T001]
 
-
+# [LLR403-T001]
 def test_get_attribute_map():
     spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype)
     assert (attribute_map.get("ReqIF.ForeignID") == "_gFhrW2ojEeuExICsU7Acmg")
     assert (attribute_map.get("NOTES") == "_aqZG4GxpEeuaU7fHySy8Bw")
+# [/LLR403-T001]
 
-
+# [LLR401-T002]
 def test_get_id_no_id():
     with pytest.raises(ValueError, match="id_missing"):
         spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype_no_id)
+# [/LLR401-T002]
 
-
+# [LLR401-T003]
 def test_get_id_malformed_id():
     with pytest.raises(ValueError, match="id_malformed"):
         spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype_id_malformed)
+# [/LLR401-T003]
 
-
+# [LLR402-T002]
 def test_get_type_no_type():
     with pytest.raises(ValueError, match="type_missing"):
         spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype_no_type)
+# [/LLR402-T002]
 
-
+# [/LLR402-T003]
 def test_get_type_unknown_type():
     with pytest.raises(ValueError, match="unknown_type"):
         spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype_unknown_type)
+# [/LLR402-T003]
 
-
+# [LLR403-T002]
 def test_get_attribute_map_malformed_attribute():
     with pytest.raises(ValueError, match="attribute_malformed"):
         spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype_attribute_malformed)
+# [/LLR403-T002]

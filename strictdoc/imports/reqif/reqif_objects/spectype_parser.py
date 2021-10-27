@@ -4,7 +4,7 @@ from xml.etree.ElementTree import Element
 
 import regex
 
-
+# [HLR401]
 class SpectypeParser:
     @staticmethod
     def parse(spectype):
@@ -45,3 +45,4 @@ class SpectypeParser:
             attribute_map[key] = value
 
         return spectype_id, spectype_type, attribute_map
+# [/HLR401]
