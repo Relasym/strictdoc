@@ -15,8 +15,6 @@ SPECIAL_FIELDS:
   TYPE: String
 - NAME: TEST_SEQUENCE
   TYPE: String
-- NAME: REFERENCE
-  TYPE: String
 
 [FREETEXT]
 Defining the Requirements for the SpecTypeParser

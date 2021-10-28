@@ -15,8 +15,6 @@ SPECIAL_FIELDS:
   TYPE: String
 - NAME: TEST_SEQUENCE
   TYPE: String
-- NAME: REFERENCE
-  TYPE: String
 
 [FREETEXT]
 Defining the technical tests for mapping from ReqIf files to SDOC
@@ -56,5 +54,18 @@ REFS:
 - TYPE: Parent
   VALUE: SR001
 TITLE: The SpecObjectParser shall convert all SpecObjects to the appropriate SDoc Requirement Object.
+
+[REQUIREMENT]
+UID: HLR010-T001
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: An etree and predefined Requirement Objects containing the same requirements.
+  TEST_SEQUENCE: The etree shall be passed to the import function and the resulting Requirement Objects compared to the predefined Requirement Objects.
+  TARGET_VALUE: The predefined Requirement Objects.
+REFS:
+- TYPE: Parent
+  VALUE: HLR010
+TITLE: The test function shall test that all Specobjects are converted to appropriate Requirement Objects.
 
 [/SECTION]

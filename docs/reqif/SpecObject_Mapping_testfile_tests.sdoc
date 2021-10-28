@@ -15,8 +15,6 @@ SPECIAL_FIELDS:
   TYPE: String
 - NAME: TEST_SEQUENCE
   TYPE: String
-- NAME: REFERENCE
-  TYPE: String
 
 [FREETEXT]
 Defining the tests for mapping different tests from ReqIf files to SDOC
@@ -34,7 +32,21 @@ SPECIAL_FIELDS:
 REFS:
 - TYPE: Parent
   VALUE: HLR010
-TITLE: The SpecObjectParser shall map test requirements
+TITLE: The SpecObjectParser shall map test requirements.
+
+[REQUIREMENT]
+UID: HLR201-T001
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: The etree element is passed into the SpecObjectParser function.
+  TEST_SEQUENCE: The test requirement shall be passed into the function as an etree element and the function returns a Requirement Object which is compared to a predefined Requirement Object.
+  TARGET_VALUE: The predefined Requirement Object.
+REFS:
+- TYPE: Parent
+  VALUE: HLR201
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+TITLE: The test function shall test the mapping of the etree element to a Requirement Object.
 
 [REQUIREMENT]
 UID: LLR201
