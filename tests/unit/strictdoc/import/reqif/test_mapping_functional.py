@@ -7,6 +7,8 @@ pytest_plugins = [
     "test_mapping_fixtures.fixture_functional",
 ]
 
+# [HLR001-T001]
+
 
 def test_mapping_functional_uid_positive(fixture_functional_correctreqifobject, fixture_functional_attribute_map,
                                          fixture_functional_relation_map):
@@ -163,3 +165,5 @@ def test_mapping_functional_title_missing(fixture_functional_missing_title,
         SpecObjectParser.parse(xml_object, "FUNCTIONAL", fixture_functional_attribute_map,
                                fixture_functional_relation_map)
     # [/LLR005-T003]
+
+# [/HLR001-T001]
