@@ -1,69 +1,38 @@
-# Todo: Implement ParserFunction
 import re
-from io import StringIO
-from typing import List
-from xml.etree import ElementTree as eTree
 from xml.etree.ElementTree import Element
-from strictdoc.imports.reqif import reqif
 
 
 class SpecRelationParser:
-    """currently no method"""
 
     @staticmethod
-    def parse(input_element):
-        # ToDo: No definition of Target and Source!!
-        """I can´t do anything!"""
-        with open(input_element, "r", encoding="UTF-8") as file:
-            # Read each line in the file, readlines() returns a list of lines
-            content = file.read()
-        try:
-            parsed_xml = eTree.parse(StringIO(content), eTree.XMLParser())
-        except Exception as e:
-            assert 0
+    def parse(specrelations):
+        """Creates a Map of Child/Parent Links from an eTree Element,
+        containing an SpecRelation ReqIF"""
 
-        parsed_spec_objects = []
+        specrelation_list = list(specrelations)
+        relation_map = {}
+        for relation in specrelation_list:
+            relation: Element
+            specobjectref: Element
+            children = list(relation)
+            target = children[0]
+            specobjectref = list(target)[0]
+            value_ID = specobjectref.text
 
-        # https://stackoverflow.com/a/12946675/598057
-        def get_namespace(element):
-            m = re.match(r'\{.*\}', element.tag)
-            return m.group(0) if m else ''
+            source = children[1]
+            specobjectref = list(source)[0]
+            key_ID = specobjectref.text
 
-        top_level_reqif_element = parsed_xml.getroot()
+            if value_ID == None:
+                raise ValueError("specrelations_missingID")
+            if key_ID == None:
+                raise ValueError("specrelations_missingID")
 
-        namespace = get_namespace(top_level_reqif_element)
-        print(f"namespace: {namespace}")
+            regex_search = re.compile("^[a-zA-Z0-9_\-.]+$")
+            if not regex_search.match(key_ID):
+                raise ValueError("specrelations_invalidID")
+            if not regex_search.match(value_ID):
+                raise ValueError("specrelations_invalidID")
 
-        print(f"top level: {top_level_reqif_element}")
-
-        top_level_reqif_element_children: List[Element] = list(top_level_reqif_element)
-        core_content_element = top_level_reqif_element_children[1]
-        print(f"CORE-CONTENT: {core_content_element}")
-
-        core_content_element_children = list(core_content_element)
-        reqif_content_element = core_content_element_children[0]
-        print(f"REQ-IF-CONTENT: {reqif_content_element}")
-
-        reqif_content_children = list(reqif_content_element)
-        spec_objects = reqif_content_children[2]
-        print(f"SPEC-OBJECTS: {spec_objects}")
-
-        spec_objects_children = list(spec_objects)
-        print(spec_objects_children[1])
-
-# Todo: Filepath hardcoded!
-# file = "../../../../tests/unit/strictdoc/import/reqif/mapping_testfile.reqif"
-
-# SpecRelationParser.parse(file)
-
-# https://www.geeksforgeeks.org/python-program-check-string-contains-special-character/
-#
-# file
-#     spec-relations
-#
-#         spec-relation
-#             source
-#             target
-#
-# Identifier contains "_ - . A-Z a-z 0-9"
-
+            relation_map[key_ID] = value_ID
+        return relation_map
