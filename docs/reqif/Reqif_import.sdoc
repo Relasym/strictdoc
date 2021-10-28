@@ -53,16 +53,16 @@ SPECIAL_FIELDS:
 REFS:
 - TYPE: Parent
   VALUE: SR001
-TITLE: The SpecObjectParser shall convert all SpecObjects to the appropriate SDoc Requirement Object.
+TITLE: The SpecObjectParser shall convert all SpecObject to the appropriate SDoc Requirement Object.
 
 [REQUIREMENT]
 UID: HLR010-T001
 STATUS: Draft
 SPECIAL_FIELDS:
   TYPE: Software
-  INITIAL_CONDITION: An etree and predefined Requirement Objects containing the same requirements.
-  TEST_SEQUENCE: The etree shall be passed to the import function and the resulting Requirement Objects compared to the predefined Requirement Objects.
-  TARGET_VALUE: The predefined Requirement Objects.
+  INITIAL_CONDITION: An etree element and predefined Requirement Object containing the same requirement.
+  TEST_SEQUENCE: The requirement shall be passed into the function as an etree element and the function returns a Requirement Object which is compared to a predefined Requirement Object.
+  TARGET_VALUE: The predefined Requirement Object.
 REFS:
 - TYPE: Parent
   VALUE: HLR010
