@@ -35,7 +35,7 @@ REFS:
 TITLE: The SpecHierarchyParser shall parse an Etree Element (SpecHierarchy) and return the data necessary for parsing of this type of SpecObjectRef. Key: Child, Value: Parent
 
 [REQUIREMENT]
-UID: LLR301
+UID: LLR501
 STATUS: Draft
 SPECIAL_FIELDS:
   ALLOCATION_TO_COMPONENT: Software
@@ -43,14 +43,14 @@ SPECIAL_FIELDS:
   TARGET_VALUE: UID
 REFS:
 - TYPE: Parent
-  VALUE: HLR301
+  VALUE: HLR501
 TITLE: The SpecHierarchyParser shall parse an Etree Element (SpecHierarchy) and return the HierarchyMap.
 COMMENT: >>>
 no comment
 <<<
 
 [REQUIREMENT]
-UID: LLR301-T001
+UID: LLR501-T001
 STATUS: Draft
 SPECIAL_FIELDS:
   TYPE: Software
@@ -59,13 +59,13 @@ SPECIAL_FIELDS:
   TARGET_VALUE: known target an source values
 REFS:
 - TYPE: Parent
-  VALUE: LLR301
+  VALUE: LLR501
 - TYPE: File
   VALUE: ..\..\tests\unit\strictdoc\import\reqif
 TITLE: Test that parsing a correct SPEC-HIERARCHY Object returns the correct map.
 
 [REQUIREMENT]
-UID: LLR301-T002
+UID: LLR501-T002
 STATUS: Draft
 SPECIAL_FIELDS:
   TYPE: Software
@@ -74,7 +74,7 @@ SPECIAL_FIELDS:
   TARGET_VALUE: ValueError("spechierarchy_invalidID")
 REFS:
 - TYPE: Parent
-  VALUE: LLR301
+  VALUE: LLR501
 - TYPE: File
   VALUE: ..\..\tests\unit\strictdoc\import\reqif
 TITLE: Test that parsing a SPEC-HIERARCHY Object with a malformed ID raises a ValueError("spechierarchy_invalidID")
