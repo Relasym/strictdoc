@@ -29,8 +29,6 @@ class Level:
             return 0
 
 
-
-
 class ReqIFImport:
     @staticmethod
     def import_from_file(input_file):
@@ -42,20 +40,32 @@ class ReqIFImport:
         except Exception as e:
             assert 0
 
-        parsed_spec_objects = []
-
         # https://stackoverflow.com/a/12946675/598057
+        # need to get the namespace for all finds, etc.
         def get_namespace(element):
             m = re.match(r'\{.*\}', element.tag)
             return m.group(0) if m else ''
 
-        top_level_reqif_element = parsed_xml.getroot()
+        # naming convention: element_xyz where xyz is the name of the reqif(xml) tag.
+        # dashes are turned into underscores
 
-        namespace = get_namespace(top_level_reqif_element)
-        print(f"namespace: {namespace}")
+        element_req_if = parsed_xml.getroot()
+        namespace = get_namespace(element_req_if)
+        namespace_dict = { "ns" : namespace}
+        # print(f"namespace: {namespace}")
+        # print(f"top level: {top_level_reqif_element}")
+        list = list(element_req_if)
+        element_the_header = element_req_if.find("THE-HEADER", namespace_dict)
+        element_core_content = element_req_if.find("CORE-CONTENT", namespace_dict)
+        element_tool_extensions = element_req_if.find("TOOL-EXTENSIONS", namespace_dict)
+        element_req_if_content = element_core_content.find("REQ-IF-CONTENT",namespace_dict)
+        element_datatypes = element_req_if_content.find("DATATYPES",namespace_dict)
+        element_spec_types = element_req_if_content.find("SPEC-TYPES", namespace_dict)
+        element_datatypes = element_req_if_content.find("DATATYPES", namespace_dict)
+        element_datatypes = element_req_if_content.find("DATATYPES", namespace_dict)
+        element_datatypes = element_req_if_content.find("DATATYPES", namespace_dict)
 
-        print(f"top level: {top_level_reqif_element}")
-        top_level_reqif_element_children: List[Element] = list(top_level_reqif_element)
+        top_level_reqif_element_children: List[Element] = list(element_req_if)
         core_content_element = top_level_reqif_element_children[1]
         print(f"CORE-CONTENT: {core_content_element}")
         core_content_element_children = list(core_content_element)
@@ -65,6 +75,8 @@ class ReqIFImport:
         spec_objects = reqif_content_children[2]
         print(f"SPEC-OBJECTS: {spec_objects}")
         spec_objects_children = list(spec_objects)
+
+        parsed_spec_objects = []
 
         spec_object: Element
         for spec_object in spec_objects_children:
@@ -118,9 +130,9 @@ class ReqIFImport:
         previous_level_components = [0]
         for parsed_spec_object in parsed_spec_objects[:20]:
             if (
-                parsed_spec_object.object_type == "_enumVal_Kind_PLACEHOLDER" or
-                parsed_spec_object.object_type == "_enumVal_Kind_TABLE" or
-                parsed_spec_object.object_type == "_enumVal_Kind_FIGURE"
+                    parsed_spec_object.object_type == "_enumVal_Kind_PLACEHOLDER" or
+                    parsed_spec_object.object_type == "_enumVal_Kind_TABLE" or
+                    parsed_spec_object.object_type == "_enumVal_Kind_FIGURE"
             ):
                 continue
 
@@ -148,4 +160,3 @@ class ReqIFImport:
         document_content = SDWriter().write(document)
         with open("output/reqif.sdoc", 'w') as output_file:
             output_file.write(document_content)
-
