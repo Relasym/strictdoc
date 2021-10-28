@@ -15,11 +15,11 @@ class SpecRelationParser:
             relation: Element
             specobjectref: Element
             children = list(relation)
-            target = children[0]
+            target = children[1]
             specobjectref = list(target)[0]
             value_ID = specobjectref.text
 
-            source = children[1]
+            source = children[0]
             specobjectref = list(source)[0]
             key_ID = specobjectref.text
 

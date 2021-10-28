@@ -52,7 +52,7 @@ specrelations_missingID = etree.fromstring(specrelation_string_missingID)
 def test_specrelationparser_positive():
     relation_map = SpecRelationParser.parse(specrelations_Object)
 
-    assert (relation_map["_eDO24C2IEeyvlO4vtsM_UA"] == "_lLoc8C2-IEeyvlO4.vtsM_UA")
+    assert (relation_map["_lLoc8C2-IEeyvlO4.vtsM_UA"] == "_eDO24C2IEeyvlO4vtsM_UA")
 
 
 # [/LLR301-T001]

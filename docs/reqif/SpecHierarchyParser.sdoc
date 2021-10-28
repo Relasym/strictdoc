@@ -79,5 +79,4 @@ REFS:
   VALUE: ..\..\tests\unit\strictdoc\import\reqif
 TITLE: Test that parsing a SPEC-HIERARCHY Object with a malformed ID raises a ValueError("spechierarchy_invalidID")
 
-
 [/SECTION]
