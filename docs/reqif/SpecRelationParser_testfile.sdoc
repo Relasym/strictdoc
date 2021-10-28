@@ -63,7 +63,7 @@ REFS:
 - TYPE: Parent
   VALUE: LLR301
 - TYPE: File
-  VALUE: ..\..\tests\unit\strictdoc\import\reqif\test_specrelation.py
+  VALUE: ..\tests\unit\strictdoc\import\reqif
 TITLE: Test that parsing a correct SPEC-RELATIONS Object returns the correct map.
 
 [REQUIREMENT]
@@ -73,12 +73,12 @@ SPECIAL_FIELDS:
   TYPE: Software
   INITIAL_CONDITION: An Etree Element containing a SPEC-RELATION xml object with a malformed ID
   TEST_SEQUENCE: The Element, containing a malformed SpecRelations Map, is parsed by the Parser and returns an Exception. The returned Exception is verified
-  TARGET_VALUE: ValueError("spec_relations_invalidID")
+  TARGET_VALUE: ValueError("specrelations_invalidID")
 REFS:
 - TYPE: Parent
   VALUE: LLR301
 - TYPE: File
-  VALUE: ..\..\tests\unit\strictdoc\import\reqif\test_specrelation.py
+  VALUE: ..\..\tests\unit\strictdoc\import\reqif
 TITLE: Test that parsing a SPEC-RELATIONS Object with a malformed ID raises a ValueError("spec_relations_invalidID")
 
 [REQUIREMENT]
@@ -88,12 +88,12 @@ SPECIAL_FIELDS:
   TYPE: Software
   INITIAL_CONDITION: An Etree Element containing a SPEC-RELATIONS xml object, containing a SPEC_RELATION with no Source
   TEST_SEQUENCE: The Element, containing a missing SpecRelations Map, is parsed by the Parser and returns an Exception. The returned Exception is verified
-  TARGET_VALUE: ValueError("spec_relations_missingID")
+  TARGET_VALUE: ValueError("specrelations_missingID")
 REFS:
 - TYPE: Parent
   VALUE: LLR301
 - TYPE: File
-  VALUE: ..\..\tests\unit\strictdoc\import\reqif\test_specrelation.py
-TITLE: Test that parsing a SPEC-RELATIONS Object with a missing ID raises a ValueError("spec_relations_missingID")
+  VALUE: ..\..\..\..\tests\unit\strictdoc\import\reqif\test_specrelation.py
+TITLE: Test that parsing a SPEC-RELATIONS Object with a missing ID raises a ValueError("spec_relations_missingID").
 
 [/SECTION]
