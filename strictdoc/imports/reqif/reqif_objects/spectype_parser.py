@@ -38,8 +38,8 @@ class SpectypeParser:
         spec_attributes = list(spectype)[0]
         for attribute_definition in spec_attributes:
             try:
-                key = attribute_definition.attrib["LONG-NAME"]
-                value = attribute_definition.attrib["IDENTIFIER"]
+                value = attribute_definition.attrib["LONG-NAME"]
+                key = attribute_definition.attrib["IDENTIFIER"]
             except Exception:
                 raise ValueError("attribute_malformed")
             attribute_map[key] = value
