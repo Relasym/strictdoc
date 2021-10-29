@@ -1,5 +1,3 @@
-from xml.etree import ElementTree as etree
-
 from strictdoc.backend.dsl.models.requirement import Requirement
 from strictdoc.backend.dsl.models.special_field import SpecialField
 
