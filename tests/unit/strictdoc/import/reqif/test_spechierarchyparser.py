@@ -70,12 +70,12 @@ spechierarchy_malformed_string = r"""<SPECIFICATIONS>
                     </SPEC-HIERARCHY>
                     <SPEC-HIERARCHY IDENTIFIER="_IWY9oDDCEeyQ56CSv4ZenA" LAST-CHANGE="2021-10-19T11:51:21.674+02:00">
                       <OBJECT>
-                        <SPEC-OBJECT-REF>_IV1kADDC?EeyQ!56CSv4?ZenA</SPEC-OBJECT-REF>
+                        <SPEC-OBJECT-REF>_IV1kADDCEeyQ56CSv4ZenA</SPEC-OBJECT-REF>
                       </OBJECT>
                       <CHILDREN>
                         <SPEC-HIERARCHY IDENTIFIER="_M-4ywDDCEeyQ56CSv4ZenA" LAST-CHANGE="2021-10-19T11:51:57.013+02:00">
                           <OBJECT>
-                            <SPEC-OBJECT-REF>_M-UyEDDCEeyQ56CSv4ZenA</SPEC-OBJECT-REF>
+                            <SPEC-OBJECT-REF>_M-UyEDDCEe!yQ56CS?v4ZenA</SPEC-OBJECT-REF>
                           </OBJECT>
                           <CHILDREN/>
                         </SPEC-HIERARCHY>
@@ -95,11 +95,11 @@ spec_hierarchy_malformed = etree.fromstring(spechierarchy_malformed_string)
 def test_spechierarchyparser_positive():
     relation_map = SpecHierarchyParser.parse(spec_hierarchy_Object)
 
-    assert (relation_map["_M-UyEDDCEeyQ56CSv4ZenA"] == "_IV1kADDCEeyQ56CSv4ZenA")
+    assert (relation_map["_M-UyEDDCEeyQ56CSv4ZenA"][0] == "_IV1kADDCEeyQ56CSv4ZenA")
 
 
 # [/LLR501-T001]
 
 def test_spechierarchyparser_invalidID():
     with pytest.raises(ValueError, match="spechierarchy_invalidID"):
-        hierarchy_map = SpecHierarchyParser.parse(spec_hierarchy_malformed)
+        relation_map = SpecHierarchyParser.parse(spec_hierarchy_malformed)
