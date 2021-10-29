@@ -1,46 +1,44 @@
 import re
+from collections import defaultdict
 from xml.etree.ElementTree import Element
 
 
 class SpecHierarchyParser:
 
     @staticmethod
-    def parse(spechierarchy):
+    def parse(specifications):
         """Creates a Map of Child/Parent Links from an eTree Element,
         containing an SpecHierarchy ReqIF"""
 
-        spechierarchy_list = list(spechierarchy)
-        relation_map = {}
-        relation_map: Element
-        for hierarchy in spechierarchy_list:
-            hierarchy: Element
-            spechierarchy: Element
-
-            # finds all Children from REQ-IF > CORE-Content > REQ-IF-CONTENT > SPECIFICATIONS > SPECIFICATION
-            children_list = list(hierarchy)[2]
-            relation_map.update(SpecHierarchyParser._getchild(children_list))
+        specifications_list = list(specifications)
+        relation_map = defaultdict(list)
+        for specification in specifications_list:
+            specification: Element
+            # finds all Children from (REQ-IF > CORE-Content > REQ-IF-CONTENT) > SPECIFICATIONS > SPECIFICATION
+            children_list = list(specification)[2]
+            for spechierarchy in children_list:
+                SpecHierarchyParser._recursive(spechierarchy, None, relation_map)
 
         return relation_map
 
     @staticmethod
-    def _getchild(children_list):
-        relation_map = {}
-        if children_list != None:
-            for hierarchy in children_list:
-                spec_hierarchy: Element
-                spec_hierarchy = list(hierarchy)
-                object = spec_hierarchy[0]
-                spec_object_ref = list(object)[0]
-                value_id = spec_object_ref.text
+    def _recursive(spechierarchy_element, parent_id, relation_map):
+        if spechierarchy_element is not None:
+            object_element = list(spechierarchy_element)[0]
+            spec_object_ref = list(object_element)[0]
+            child_id = spec_object_ref.text
+            if parent_id is not None:
+                regex_search = re.compile("^[a-zA-Z0-9_\-.]+$")
+                if not regex_search.match(parent_id):
+                    raise ValueError("spechierarchy_invalidID")
+                if not regex_search.match(child_id):
+                    raise ValueError("spechierarchy_invalidID")
 
-                children = list(spec_hierarchy)[1]
-                spec_hierarchy_children = children[0]
-                object_children = spec_hierarchy_children[0]
-                spec_object_ref = list(object_children)[0]
-                key_id = spec_object_ref.text
+                parent_list = relation_map[child_id]
+                parent_list.append(parent_id)
 
-                # Writes the key_id and value_id in the Dictionary relation_map
-                relation_map[key_id] = value_id
-
-                relation_map.update(SpecHierarchyParser._getchild(spec_hierarchy_children))
-        return relation_map
+            spechierarchy_element_list = list(spechierarchy_element)
+            if len(spechierarchy_element_list) >= 2:
+                children_element = spechierarchy_element_list[1]
+                for spec_hierarchy_element in children_element:
+                    SpecHierarchyParser._recursive(spec_hierarchy_element, child_id, relation_map)
