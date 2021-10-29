@@ -1,19 +1,15 @@
 import re
 from collections import defaultdict
 from io import StringIO
-from typing import List
 from xml.etree import ElementTree as etree
 from xml.etree.ElementTree import Element
 
 from strictdoc.backend.dsl.models.document import Document
 from strictdoc.backend.dsl.models.document_config import DocumentConfig
-from strictdoc.backend.dsl.models.section import Section
 from strictdoc.backend.dsl.writer import SDWriter
 from strictdoc.imports.reqif.reqif_objects.spectype_parser import SpectypeParser
 from strictdoc.imports.reqif.reqif_objects.specrelationparser import SpecRelationParser
-
-# TODO uncomment this and the relevant code below once SpecHierarchyParser is implemented
-# from strictdoc.imports.reqif.reqif_objects.specrhierarchyparser import SpecHierarchyParser
+from strictdoc.imports.reqif.reqif_objects.spechierarchyparser import SpecHierarchyParser
 
 from strictdoc.imports.reqif.reqif_objects.specobjectparser import SpecObjectParser
 
@@ -72,7 +68,7 @@ class ReqIFImport:
         # getting all structural elements from the reqif tree:
 
         # the header, containg metadata about the document
-        element_the_header = element_req_if.find("THE-HEADER",namespace_dict)
+        element_the_header = element_req_if.find("THE-HEADER", namespace_dict)
 
         # core content, contains req-if-content which contains all the actual content
         element_core_content = element_req_if.find("CORE-CONTENT", namespace_dict)
@@ -112,107 +108,66 @@ class ReqIFImport:
         parsed_spectypes = {}
         for spectype in list(element_spec_types):
             type_id, type_name, type_map = SpectypeParser.parse(spectype)
-            type_data = {type_name, type_map}
-            parsed_spectypes[type_id] = type_data
+            if type_id is not None:
+                type_data = [type_name, type_map]
+                parsed_spectypes[type_id] = type_data
 
         # get links between requirements:
         structure_map = defaultdict(list)
-        # TODO uncomment this and the import statement once SpecHierarchyParser is implemented
-        # if element_specifications is not None:
-        #     hierarchy_map = SpecHierarchyParser.parse(element_specifications)
-        #     for k, v in hierarchy_map:
-        #         structure_map[k].append(v)
+
+        if element_specifications is not None:
+            hierarchy_map = SpecHierarchyParser.parse(element_specifications)
+            for k, v in hierarchy_map.items():
+                structure_map[k].extend(v)
         if element_spec_relations is not None:
             relation_map = SpecRelationParser.parse(element_spec_relations)
-            for k, v in relation_map:
+            for k, v in relation_map.items():
                 structure_map[k].append(v)
+
+        # TODO the lists contain reqIF ids, but the SpecObjectParser requires UIDs to correctly set requirements
+        structure_map = ReqIFImport.replace_ids(element_spec_objects, parsed_spectypes, structure_map)
+
+        document_config = DocumentConfig(None, "0.0.1", "DOC-N-001", [], None)
+        document = Document("Test reqif", "Test reqif", document_config, [], [])
 
         # with parsed spectypes and structure map, parse each specobject into a SDoc requirement
         requirements = []
         for spec_object in element_spec_objects:
             requirement = SpecObjectParser.parse(spec_object, parsed_spectypes, structure_map)
+            requirement.parent = document
             requirements.append(requirement)
 
-        # spec_object: Element
-        # for spec_object in element_spec_objects:
-        #     object_type = None
-        #     object_uid = None
-        #     object_content = None
-        #
-        #     spec_object_children = list(spec_object)
-        #     print(spec_object_children)
-        #
-        #     spec_object_values = spec_object_children[0]
-        #     print(spec_object_values)
-        #
-        #     spec_object_values_children = list(spec_object_values)
-        #
-        #     spec_object_values_child: Element
-        #     for spec_object_values_child in spec_object_values_children:
-        #         # ElementTree -- provide a way to ignore namespace in tags and searches
-        #         # https://bugs.python.org/issue18304
-        #         if "ATTRIBUTE-VALUE-ENUMERATION" in spec_object_values_child.tag:
-        #             definition = spec_object_values_child.find(f"{namespace}DEFINITION")
-        #             string_ref = definition.find(f"{namespace}ATTRIBUTE-DEFINITION-ENUMERATION-REF");
-        #             value = string_ref.text
-        #             print(f"enum ref value: {value}")
-        #             if value == "_stype_requirement_kind":
-        #                 attribute_values = (spec_object_values_child.find(f"{namespace}VALUES"))
-        #                 enum_value_ref = (attribute_values.find(f"{namespace}ENUM-VALUE-REF"))
-        #                 enum_value_ref_text = enum_value_ref.text
-        #                 print(enum_value_ref_text)
-        #                 object_type = enum_value_ref_text
-        #         elif "ATTRIBUTE-VALUE-STRING" in spec_object_values_child.tag:
-        #             definition = spec_object_values_child.find(f"{namespace}DEFINITION")
-        #             string_ref = definition.find(f"{namespace}ATTRIBUTE-DEFINITION-STRING-REF");
-        #             value = string_ref.text
-        #             # print(value)
-        #             spec_object_title = (spec_object_values_child.get("THE-VALUE"))
-        #
-        #             if value == "_stype_requirement_requirementID":
-        #                 # print(f"requirement ID: {spec_object_title}")
-        #                 object_uid = spec_object_title
-        #             if value == "_stype_requirement_PlainText":
-        #                 # print(f"requirement title: {spec_object_title}")
-        #                 object_content = spec_object_title
-        #
-        #     parsed_spec_objects.append(SpecObject(object_type, object_uid, object_content))
-
-        document_config = DocumentConfig(None, "0.0.1", "DOC-N-001", [], None)
-        document = Document("Test reqif", "Test reqif", document_config, [], [])
-
-        # current_section = document
-        # previous_level_components = [0]
-        # for parsed_spec_object in parsed_spec_objects[:20]:
-        #     if (
-        #             parsed_spec_object.object_type == "_enumVal_Kind_PLACEHOLDER" or
-        #             parsed_spec_object.object_type == "_enumVal_Kind_TABLE" or
-        #             parsed_spec_object.object_type == "_enumVal_Kind_FIGURE"
-        #     ):
-        #         continue
-        #
-        #     print(parsed_spec_object)
-        #     current_level_components = list(map(Level.parse_uid_as_int, parsed_spec_object.object_uid.split(".")))
-        #     print(current_level_components)
-        #
-        #     if parsed_spec_object.object_type == "_enumVal_Kind_HEADING":
-        #         compare = Level.compare(previous_level_components, current_level_components)
-        #
-        #         if compare == 1:
-        #             current_section = current_section.section_contents[-1]
-        #         elif compare == -1:
-        #             current_section = current_section.parent
-        #         else:
-        #             pass  # Intentionally nothing
-        #         section = Section(
-        #             current_section, None, None, parsed_spec_object.object_content, [], []
-        #         )
-        #         section.ng_level = len(current_level_components)
-        #         current_section.section_contents.append(section)
-        #
-        #     previous_level_components = current_level_components
+        document.section_contents = requirements
 
         # TODO fix dummy path
         document_content = SDWriter().write(document)
         with open("output/reqif.sdoc", 'w') as output_file:
             output_file.write(document_content)
+
+    @staticmethod
+    def replace_ids(spec_objects, spec_types, structure_map):
+        # TODO due to bad planning, this function needs to replace all reqIF ids in the structure map with UIDs
+        # create map of all spec_objects and their UID:
+        id_map = {}
+        for spec_object in spec_objects:
+            spec_object: Element
+            spec_object_id = spec_object.attrib["IDENTIFIER"]
+            spec_type = list(spec_object)[1]
+            spec_type_id = list(spec_type)[0].text
+            type_data = spec_types[spec_type_id]
+            attrib_map = type_data[1]
+            for k, v in attrib_map.items():
+                if v == "requirement_ID":
+                    uid = k
+                    continue
+            assert uid
+            id_map[spec_object_id] = uid
+
+        # replace all reqif ids with UIDs
+        new_map = {}
+        for k, v in structure_map.items():
+            new_list = []
+            for list_item in v:
+                new_list.append(id_map[list_item])
+            new_map[id_map[k]] = new_list
+        return new_map
