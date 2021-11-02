@@ -2,24 +2,23 @@ import pytest
 
 
 @pytest.fixture
-def fixture_technical_attribute_map():
+def fixture_technical_type_map():
     attributes_map = {
-        "requirement_ID": "_oE860C2FEeyvlO4vtsM_UA",
-        "allocation_to_component": "_wgHwUC2FEeyvlO4vtsM_UA",
-        "asil": "_4xnFYC2FEeyvlO4vtsM_UA",
-        "status": "_-_ye4C2FEeyvlO4vtsM_UA",
-        "target_value": "_7Eyo8C2FEeyvlO4vtsM_UA",
-        "technical_description": "_rWmRwC2FEeyvlO4vtsM_UA",
-        "comment": "_9J6iYC2FEeyvlO4vtsM_UA"
+        "_oE860C2FEeyvlO4vtsM_UA": "requirement_ID",
+        "_wgHwUC2FEeyvlO4vtsM_UA": "allocation_to_component",
+        "_4xnFYC2FEeyvlO4vtsM_UA": "asil",
+        "_-_ye4C2FEeyvlO4vtsM_UA": "status",
+        "_7Eyo8C2FEeyvlO4vtsM_UA": "target_value",
+        "_rWmRwC2FEeyvlO4vtsM_UA": "technical_description",
+        "_9J6iYC2FEeyvlO4vtsM_UA": "comment"
     }
-    return attributes_map
+    type_map = {"_dSe2wC2FEeyvlO4vtsM_UA": ["technical", attributes_map]}
+    return type_map
 
 @pytest.fixture
 def fixture_technical_relation_map():
     # spec_object_type = "test"
-    relation_map = {
-
-    }
+    relation_map = {"LLR204": ["LLR001", "SR001"], "LLR002-T001": ["LLR002", "SR002"]}
     return relation_map
 
 @pytest.fixture
@@ -37,7 +36,7 @@ def fixture_technical_uid():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -74,7 +73,7 @@ def fixture_technical_uid_malformed():
     # 1 create testobject from string
     object_string_pos = r"""<SPEC-OBJECT IDENTIFIER="_twogozC5EeyQ56CSv4ZenA" LAST-CHANGE="2021-10-19T10:52:02.224+02:00">
           <VALUES>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="!?LLR204?!asdf">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="!?LLR204?!as''''''df">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_oE860C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -84,7 +83,7 @@ def fixture_technical_uid_malformed():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -131,7 +130,7 @@ def fixture_technical_uid_missing():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -178,7 +177,7 @@ def fixture_technical_allocation_to_component():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -220,12 +219,12 @@ def fixture_technical_allocation_to_component_malformed():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_oE860C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="'!"'">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="''software''">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -272,7 +271,7 @@ def fixture_technical_asil():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -319,7 +318,7 @@ def fixture_technical_asil_malformed():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="M4lf0rm3d">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="IL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -366,7 +365,7 @@ def fixture_technical_status():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -408,12 +407,12 @@ def fixture_technical_status_malformed():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_oE860C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="M4lf0rm3d">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="M4lf0rm'3d">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -460,7 +459,7 @@ def fixture_technical_target_value():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -507,7 +506,7 @@ def fixture_technical_target_value_malformed():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -517,7 +516,7 @@ def fixture_technical_target_value_malformed():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_wgHwUC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="SP3CIaL_Fi3LD(initial_c0ndiTi0n)">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="SP3CIaL_F'''''i3LD(initial_c0ndiTi0n)">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_7Eyo8C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -554,7 +553,7 @@ def fixture_technical_target_value_missing():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -601,7 +600,7 @@ def fixture_technical_technical_description():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -648,7 +647,7 @@ def fixture_technical_technical_description_malformed():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -663,7 +662,7 @@ def fixture_technical_technical_description_malformed():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_7Eyo8C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="!?adsfasdf?!">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="!?adsfasdf?!'">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_rWmRwC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -695,7 +694,7 @@ def fixture_technical_technical_description_missing():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -742,7 +741,7 @@ def fixture_technical_comment():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -789,7 +788,7 @@ def fixture_technical_comment_malformed():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_-_ye4C2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_4xnFYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -809,7 +808,7 @@ def fixture_technical_comment_malformed():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_rWmRwC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="/§$&%">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="'abc'">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_9J6iYC2FEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>

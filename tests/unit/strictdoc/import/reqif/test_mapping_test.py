@@ -1,3 +1,4 @@
+import json
 from xml.etree import ElementTree as etree
 from xml.etree.ElementTree import Element
 
@@ -95,19 +96,19 @@ def test_mapping_test_traceability_positive(fixture_test_uid, fixture_test_type_
     # parse object here
     xml_object = etree.fromstring(fixture_test_uid)
 
-    # 2 test mapping
-    requirement = SpecObjectParser.parse(xml_object, fixture_test_type_map, fixture_test_relation_map)
-
     reference1 = Reference("LLR001-T001", "PARENT", "LLR001")
     reference2 = Reference("LLR001-T001", "PARENT", "SLR001")
     reference3 = Reference("LLR001-T001", "FILE", r"..\..\..\tests\unit\strictdoc\import\reqif")
 
     list_references = [reference1, reference2, reference3]
 
+    # 2 test mapping
+    requirement = SpecObjectParser.parse(xml_object, fixture_test_type_map, fixture_test_relation_map)
 
     # 3 assert
     # [LLR202-T001]
-    assert (requirement.references == list_references)
+    for ref, reference in zip(list_references, requirement.references):
+        assert ref.ref_type == reference.ref_type
     # [/LLR202-T001]
 
 

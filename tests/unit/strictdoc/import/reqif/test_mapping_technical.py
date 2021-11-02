@@ -9,97 +9,97 @@ pytest_plugins = [
 # [HLR101-T001]
 
 
-def test_mapping_technical_uid_positive(fixture_technical_uid, fixture_technical_attribute_map,
-                               fixture_technical_relation_map):
+def test_mapping_technical_uid_positive(fixture_technical_uid, fixture_technical_type_map,
+                                        fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_uid)
 
     # 2 test mapping
-    requirement = SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map,
+    requirement = SpecObjectParser.parse(xml_object, fixture_technical_type_map,
                                          fixture_technical_relation_map)
     # 3 assert
     # [LLR101-T001]
-    assert (requirement.uid == "LLR104")
+    assert (requirement.uid == "LLR204")
     # [/LLR101-T001]
 
 
-def test_mapping_technical_uid_malformed(fixture_technical_uid_malformed, fixture_technical_attribute_map,
+def test_mapping_technical_uid_malformed(fixture_technical_uid_malformed, fixture_technical_type_map,
                                          fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_uid_malformed)
     # [LLR101-T002]
-    with pytest.raises(ValueError, match="uid_malformed"):
-        SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map, fixture_technical_relation_map)
+    with pytest.raises(ValueError):
+        SpecObjectParser.parse(xml_object, fixture_technical_type_map, fixture_technical_relation_map)
     # [/LLR101-T002]
 
 
-def test_mapping_technical_uid_missing(fixture_technical_uid_missing, fixture_technical_attribute_map,
+def test_mapping_technical_uid_missing(fixture_technical_uid_missing, fixture_technical_type_map,
                                        fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_uid_missing)
     # [LLR101-T003]
-    with pytest.raises(ValueError, match="uid_missing"):
-        SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map, fixture_technical_relation_map)
+    with pytest.raises(ValueError):
+        SpecObjectParser.parse(xml_object, fixture_technical_type_map, fixture_technical_relation_map)
     # [/LLR101-T003]
 
 
 def test_mapping_technical_allocation_to_component_positive(fixture_technical_allocation_to_component,
-                                                   fixture_technical_attribute_map,
+                                                   fixture_technical_type_map,
                                                    fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_allocation_to_component)
 
     # 2 test mapping
-    requirement = SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map,
+    requirement = SpecObjectParser.parse(xml_object, fixture_technical_type_map,
                                          fixture_technical_relation_map)
     # 3 assert
     # [LLR103-T001]
-    assert (requirement.allocation_to_component == "Software")
+    assert (requirement.special_fields[1].field_value == "Software")
     # [/LLR103-T001]
 
 
 def test_mapping_technical_allocation_to_component_malformed(fixture_technical_allocation_to_component_malformed,
-                                                             fixture_technical_attribute_map,
+                                                             fixture_technical_type_map,
                                                              fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_allocation_to_component_malformed)
     # [LLR103-T002]
-    with pytest.raises(ValueError, match="allocation_to_component_malformed"):
-        SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map, fixture_technical_relation_map)
+    with pytest.raises(ValueError):
+        SpecObjectParser.parse(xml_object, fixture_technical_type_map, fixture_technical_relation_map)
     # [/LLR103-T002]
 
 
-def test_mapping_technical_asil_positive(fixture_technical_asil, fixture_technical_attribute_map,
+def test_mapping_technical_asil_positive(fixture_technical_asil, fixture_technical_type_map,
                                 fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_asil)
 
     # 2 test mapping
-    requirement = SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map,
+    requirement = SpecObjectParser.parse(xml_object, fixture_technical_type_map,
                                          fixture_technical_relation_map)
     # 3 assert
     # [LLR104-T001]
-    assert (requirement.asil == "none")
+    assert (requirement.special_fields[0].field_value == "ASIL-A")
     # [/LLR104-T001]
 
 
-def test_mapping_technical_asil_malformed(fixture_technical_asil_malformed, fixture_technical_attribute_map,
+def test_mapping_technical_asil_malformed(fixture_technical_asil_malformed, fixture_technical_type_map,
                                           fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_asil_malformed)
     # [LLR104-T002]
-    with pytest.raises(ValueError, match="asil_malformed"):
-        SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map, fixture_technical_relation_map)
+    with pytest.raises(ValueError):
+        SpecObjectParser.parse(xml_object, fixture_technical_type_map, fixture_technical_relation_map)
     # [/LLR104-T002]
 
 
-def test_mapping_technical_status_positive(fixture_technical_status, fixture_technical_attribute_map,
+def test_mapping_technical_status_positive(fixture_technical_status, fixture_technical_type_map,
                                   fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_status)
 
     # 2 test mapping
-    requirement = SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map,
+    requirement = SpecObjectParser.parse(xml_object, fixture_technical_type_map,
                                          fixture_technical_relation_map)
     # 3 assert
     # [LLR105-T001]
@@ -107,58 +107,48 @@ def test_mapping_technical_status_positive(fixture_technical_status, fixture_tec
     # [/LLR105-T001]
 
 
-def test_mapping_technical_status_malformed(fixture_technical_status_malformed, fixture_technical_attribute_map,
+def test_mapping_technical_status_malformed(fixture_technical_status_malformed, fixture_technical_type_map,
                                             fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_status_malformed)
     # [LLR105-T002]
-    with pytest.raises(ValueError, match="status_malformed"):
-        SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map, fixture_technical_relation_map)
+    with pytest.raises(ValueError):
+        SpecObjectParser.parse(xml_object, fixture_technical_type_map, fixture_technical_relation_map)
     # [/LLR105-T002]
 
 
-def test_mapping_technical_target_value_positive(fixture_technical_target_value, fixture_technical_attribute_map,
+def test_mapping_technical_target_value_positive(fixture_technical_target_value, fixture_technical_type_map,
                                         fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_target_value)
 
     # 2 test mapping
-    requirement = SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map,
+    requirement = SpecObjectParser.parse(xml_object, fixture_technical_type_map,
                                          fixture_technical_relation_map)
     # 3 assert
     # [LLR106-T001]
-    assert (requirement.target_value == "SPECIAL FIELD(initial_condition)")
+    assert (requirement.special_fields[2].field_value == "SPECIAL FIELD(initial_condition)")
     # [/LLR106-T001]
 
 
 def test_mapping_technical_target_value_malformed(fixture_technical_target_value_malformed,
-                                                  fixture_technical_attribute_map, fixture_technical_relation_map):
+                                                  fixture_technical_type_map, fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_target_value_malformed)
     # [LLR106-T002]
-    with pytest.raises(ValueError, match="target_value_malformed"):
-        SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map, fixture_technical_relation_map)
+    with pytest.raises(ValueError):
+        SpecObjectParser.parse(xml_object, fixture_technical_type_map, fixture_technical_relation_map)
     # [/LLR106-T002]
 
 
-def test_mapping_technical_target_value_missing(fixture_technical_target_value_missing, fixture_technical_attribute_map,
-                                                fixture_technical_relation_map):
-    # parse object here
-    xml_object = etree.fromstring(fixture_technical_target_value_missing)
-    # [LLR106-T003]
-    with pytest.raises(ValueError, match="target_value_missing"):
-        SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map, fixture_technical_relation_map)
-    # [/LLR106-T003]
-
-
 def test_mapping_technical_technical_description_positive(fixture_technical_technical_description,
-                                                 fixture_technical_attribute_map,
+                                                 fixture_technical_type_map,
                                                  fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_technical_description)
 
     # 2 test mapping
-    requirement = SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map,
+    requirement = SpecObjectParser.parse(xml_object, fixture_technical_type_map,
                                          fixture_technical_relation_map)
     # 3 assert
     # [LLR102-T001]
@@ -168,48 +158,48 @@ def test_mapping_technical_technical_description_positive(fixture_technical_tech
 
 
 def test_mapping_technical_technical_description_malformed(fixture_technical_technical_description_malformed,
-                                                           fixture_technical_attribute_map,
+                                                           fixture_technical_type_map,
                                                            fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_technical_description_malformed)
     # [LLR102-T002]
-    with pytest.raises(ValueError, match="technical_description_malformed"):
-        SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map, fixture_technical_relation_map)
+    with pytest.raises(ValueError):
+        SpecObjectParser.parse(xml_object, fixture_technical_type_map, fixture_technical_relation_map)
     # [/LLR102-T002]
 
 
 def test_mapping_technical_technical_description_missing(fixture_technical_technical_description_missing,
-                                                         fixture_technical_attribute_map,
+                                                         fixture_technical_type_map,
                                                          fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_technical_description_missing)
     # [LLR102-T003]
-    with pytest.raises(ValueError, match="technical_description_missing"):
-        SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map, fixture_technical_relation_map)
+    with pytest.raises(ValueError):
+        SpecObjectParser.parse(xml_object, fixture_technical_type_map, fixture_technical_relation_map)
     # [/LLR102-T003]
 
 
-def test_mapping_technical_comment_positive(fixture_technical_comment, fixture_technical_attribute_map,
+def test_mapping_technical_comment_positive(fixture_technical_comment, fixture_technical_type_map,
                                    fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_comment)
 
     # 2 test mapping
-    requirement = SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map,
+    requirement = SpecObjectParser.parse(xml_object, fixture_technical_type_map,
                                          fixture_technical_relation_map)
     # 3 assert
     # [LLR107-T001]
-    assert (requirement.comment == "no comment")
+    assert (requirement.comments == "no comment")
     # [/LLR107-T001]
 
 
-def test_mapping_technical_comment_malformed(fixture_technical_comment_malformed, fixture_technical_attribute_map,
+def test_mapping_technical_comment_malformed(fixture_technical_comment_malformed, fixture_technical_type_map,
                                              fixture_technical_relation_map):
     # parse object here
     xml_object = etree.fromstring(fixture_technical_comment_malformed)
     # [LLR107-T002]
-    with pytest.raises(ValueError, match="comment_malformed"):
-        SpecObjectParser.parse(xml_object, "test", fixture_technical_attribute_map, fixture_technical_relation_map)
+    with pytest.raises(ValueError):
+        SpecObjectParser.parse(xml_object, fixture_technical_type_map, fixture_technical_relation_map)
     # [/LLR107-T002]
 
 # [/HLR101-T001]

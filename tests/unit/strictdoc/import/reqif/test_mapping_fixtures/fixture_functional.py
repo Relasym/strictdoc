@@ -2,22 +2,21 @@ import pytest
 
 
 @pytest.fixture
-def fixture_functional_attribute_map():
+def fixture_functional_type_map():
     attributes_map = {
-        "requirement_ID": "_FEHY0C2GEeyvlO4vtsM_UA",
-        "allocation": "_KMVP0C2GEeyvlO4vtsM_UA",
-        "asil": "_MZGCUC2GEeyvlO4vtsM_UA",
-        "status": "_OlZh0C2GEeyvlO4vtsM_UA",
-        "functional_description": "_Hx6b0C2GEeyvlO4vtsM_UA",
+        "_FEHY0C2GEeyvlO4vtsM_UA": "requirement_ID",
+        "_KMVP0C2GEeyvlO4vtsM_UA": "allocation",
+        "_MZGCUC2GEeyvlO4vtsM_UA": "asil",
+        "_OlZh0C2GEeyvlO4vtsM_UA": "status",
+        "_Hx6b0C2GEeyvlO4vtsM_UA": "functional_description",
     }
-    return attributes_map
+    type_map = {"_gV9O0C2FEeyvlO4vtsM_UA": ["functional", attributes_map]}
+    return type_map
 
 
 @pytest.fixture
 def fixture_functional_relation_map():
-    relation_map = {
-
-    }
+    relation_map = {"SR001": ["LLR001", "SR002"], "LLR002-T001": ["LLR002", "SR003"]}
     return relation_map
 
 
@@ -40,7 +39,7 @@ def fixture_functional_correctreqifobject():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_KMVP0C2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="none">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="ASIL-A">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_MZGCUC2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
@@ -181,7 +180,7 @@ def fixture_functional_malformed_asil():
                 <ATTRIBUTE-DEFINITION-STRING-REF>_KMVP0C2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
             </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="?\n\n\\n">
+            <ATTRIBUTE-VALUE-STRING THE-VALUE="abc">
               <DEFINITION>
                 <ATTRIBUTE-DEFINITION-STRING-REF>_MZGCUC2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
               </DEFINITION>
