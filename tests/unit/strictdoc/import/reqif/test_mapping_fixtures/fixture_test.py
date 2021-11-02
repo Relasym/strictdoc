@@ -2,26 +2,19 @@
 import pytest
 
 @pytest.fixture
-def fixture_test_attribute_map():
+def fixture_test_type_map():
     # spec_object_type = "test"
-    attributes_map = {
-        "requirement_ID": "_BSKKIS2GEeyvlO4vtsM_UA",
-        "type": "_BSKKJC2GEeyvlO4vtsM_UA",
-        "initial_condition": "_BSKKJS2GEeyvlO4vtsM_UA",
-        "test_sequence": "_BSKKJi2GEeyvlO4vtsM_UA",
-        "target_value": "_a5wPYC2GEeyvlO4vtsM_UA",
-        "objective": "_DjbacC2MEeyvlO4vtsM_UA",
-        "reference": "_IjYFQC2XEeyvlO4vtsM_UA",
-        "status": "_g_yJwC2XEeyvlO4vtsM_UA"
-    }
-    return attributes_map
+    attributes_map = {"_BSKKIS2GEeyvlO4vtsM_UA": "requirement_ID", "_BSKKJC2GEeyvlO4vtsM_UA": "type",
+                      "_BSKKJS2GEeyvlO4vtsM_UA": "initial_condition", "_BSKKJi2GEeyvlO4vtsM_UA": "test_sequence",
+                      "_a5wPYC2GEeyvlO4vtsM_UA": "target_value", "_DjbacC2MEeyvlO4vtsM_UA": "objective",
+                      "_IjYFQC2XEeyvlO4vtsM_UA": "traceability", "_g_yJwC2XEeyvlO4vtsM_UA": "status"}
+    type_map = {"_BSKKIC2GEeyvlO4vtsM_UA": ["test", attributes_map]}
+    return type_map
 
 @pytest.fixture
 def fixture_test_relation_map():
     # spec_object_type = "test"
-    relation_map = {
-
-    }
+    relation_map = {"LLR001-T001": ["LLR001", "SLR001"], "LLR002-T001": ["LLR002", "SLR002"]}
     return relation_map
 
 @pytest.fixture
@@ -272,7 +265,7 @@ def fixture_test_traceability_malformed():
                     <ATTRIBUTE-DEFINITION-STRING-REF>_g_yJwC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
                   </DEFINITION>
                 </ATTRIBUTE-VALUE-STRING>
-                <ATTRIBUTE-VALUE-STRING THE-VALUE="hallo">
+                <ATTRIBUTE-VALUE-STRING THE-VALUE="malforme'd">
                   <DEFINITION>
                     <ATTRIBUTE-DEFINITION-STRING-REF>_IjYFQC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
                   </DEFINITION>
@@ -787,7 +780,7 @@ def fixture_test_status_malformed():
                     <ATTRIBUTE-DEFINITION-STRING-REF>_BSKKJi2GEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
                   </DEFINITION>
                 </ATTRIBUTE-VALUE-STRING>
-                <ATTRIBUTE-VALUE-STRING THE-VALUE="Malformed">
+                <ATTRIBUTE-VALUE-STRING THE-VALUE="Malforme'd">
                   <DEFINITION>
                     <ATTRIBUTE-DEFINITION-STRING-REF>_g_yJwC2XEeyvlO4vtsM_UA</ATTRIBUTE-DEFINITION-STRING-REF>
                   </DEFINITION>
