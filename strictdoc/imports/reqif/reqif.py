@@ -174,3 +174,4 @@ class ReqIFImport:
             new_map[id_map[k]] = new_list
         return new_map
 
+
