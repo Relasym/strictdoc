@@ -125,7 +125,7 @@ def test_spectypeparser():
 
 # [/HLR401-T001]
 
-# [/LLR401-T001]
+# [LLR401-T001]
 def test_get_id():
     spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype)
     assert (spectype_id == "_gFhrWmojEeuExICsU7Acmg")
@@ -174,7 +174,7 @@ def test_get_type_no_type():
 
 # [/LLR402-T002]
 
-# [/LLR402-T003]
+# [LLR402-T003]
 def test_get_type_unknown_type():
     with pytest.raises(ValueError, match="unknown_type"):
         spectype_id, spectype_type, attribute_map = SpectypeParser.parse(spectype_unknown_type)
