@@ -171,5 +171,3 @@ class ReqIFImport:
                 new_list.append(id_map[list_item])
             new_map[id_map[k]] = new_list
         return new_map
-
-ReqIFImport.import_from_file(r"C:\Users\codersbay\PycharmProjects\strictdoc\tests\unit\strictdoc\import\reqif\mapping_testfile.reqif")
