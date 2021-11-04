@@ -147,6 +147,8 @@ class ReqIFImport:
     @staticmethod
     def replace_ids(spec_objects, spec_types, structure_map):
         # TODO due to bad planning, this function needs to replace all reqIF ids in the structure map with UIDs
+        # need to fix: replaces reqif object-ids with type-ids atm
+
         # create map of all spec_objects and their UID:
         id_map = {}
         for spec_object in spec_objects:
