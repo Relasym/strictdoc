@@ -147,6 +147,8 @@ class ReqIFImport:
     @staticmethod
     def replace_ids(spec_objects, spec_types, structure_map):
         # TODO due to bad planning, this function needs to replace all reqIF ids in the structure map with UIDs
+        # replaces object-ids with type-id at the moment
+
         # create map of all spec_objects and their UID:
         id_map = {}
         for spec_object in spec_objects:
@@ -172,4 +174,4 @@ class ReqIFImport:
             new_map[id_map[k]] = new_list
         return new_map
 
-ReqIFImport.import_from_file(r"C:\Users\codersbay\PycharmProjects\strictdoc\tests\unit\strictdoc\import\reqif\mapping_testfile.reqif")
+

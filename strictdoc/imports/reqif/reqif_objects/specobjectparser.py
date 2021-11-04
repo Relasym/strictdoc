@@ -1,5 +1,5 @@
 from strictdoc.backend.dsl.models.reference import Reference
-from strictdoc.backend.dsl.models.requirement import Requirement
+from strictdoc.backend.dsl.models.requirement import Requirement, RequirementComment
 from strictdoc.backend.dsl.models.special_field import SpecialField
 
 
@@ -57,13 +57,13 @@ class SpecObjectParser:
                     if attribute != "type" and attribute != "status":
                         raise ValueError("Required_attribute_missing")
             # initialize special fields
-            special_field_type = SpecialField(dict_attribute_value["requirement_ID"], "type",
+            special_field_type = SpecialField(dict_attribute_value["requirement_ID"], "TYPE",
                                               dict_attribute_value["type"])
-            special_field_initial_condition = SpecialField(dict_attribute_value["requirement_ID"], "initial_condition",
+            special_field_initial_condition = SpecialField(dict_attribute_value["requirement_ID"], "INITIAL_CONDITION",
                                                            dict_attribute_value["initial_condition"])
-            special_field_test_sequence = SpecialField(dict_attribute_value["requirement_ID"], "test_sequence",
+            special_field_test_sequence = SpecialField(dict_attribute_value["requirement_ID"], "TEST_SEQUENCE",
                                                        dict_attribute_value["test_sequence"])
-            special_field_target_value = SpecialField(dict_attribute_value["requirement_ID"], "target_value",
+            special_field_target_value = SpecialField(dict_attribute_value["requirement_ID"], "TARGET_VALUE",
                                                       dict_attribute_value["target_value"])
             special_fields = [special_field_type, special_field_initial_condition, special_field_test_sequence,
                               special_field_target_value]
@@ -73,9 +73,11 @@ class SpecObjectParser:
             list_references.append(Reference(dict_attribute_value["requirement_ID"], "FILE", dict_attribute_value["traceability"]))
 
             # return Requirement object
-            return Requirement("DOCUMENT", None, None, dict_attribute_value["requirement_ID"],
-                               dict_attribute_value["status"], None, list_references,
-                               dict_attribute_value["objective"], None, None, None, None, special_fields)
+            req = Requirement("DOCUMENT", None, None, dict_attribute_value["requirement_ID"],
+                              dict_attribute_value["status"], None, list_references,
+                              dict_attribute_value["objective"], None, None, None, [], special_fields)
+            req.ng_level = 1
+            return req
 
         if element_type == "technical":
             for attribute in dict_attribute_value:
@@ -83,24 +85,27 @@ class SpecObjectParser:
                     if attribute == "requirement_ID" or attribute == "relation" or attribute == "technical_description":
                         raise ValueError("Required_attribute_missing")
             # initialize special fields
-            special_field_asil = SpecialField(dict_attribute_value["requirement_ID"], "asil",
+            special_field_asil = SpecialField(dict_attribute_value["requirement_ID"], "ASIL",
                                               dict_attribute_value["asil"])
             special_field_allocation_to_component = SpecialField(dict_attribute_value["requirement_ID"],
-                                                                 "allocation_to_component",
+                                                                 "ALLOCATION_TO_COMPONENT",
                                                                  dict_attribute_value["allocation_to_component"])
             special_field_target_value = SpecialField(dict_attribute_value["requirement_ID"],
-                                                      "target_value",
+                                                      "TARGET_VALUE",
                                                       dict_attribute_value["target_value"])
             special_fields = [special_field_asil, special_field_allocation_to_component,
                               special_field_target_value]
 
             list_references = SpecObjectParser.getparents(dict_attribute_value, relation_map)
+            comment = RequirementComment(dict_attribute_value["requirement_ID"], None, dict_attribute_value["comment"])
 
             # return Requirement object
-            return Requirement("DOCUMENT", None, None, dict_attribute_value["requirement_ID"],
-                               dict_attribute_value["status"], None, list_references,
-                               dict_attribute_value["technical_description"], None, None, None,
-                               dict_attribute_value["comment"], special_fields)
+            req = Requirement("DOCUMENT", None, None, dict_attribute_value["requirement_ID"],
+                              dict_attribute_value["status"], None, list_references,
+                              dict_attribute_value["technical_description"], None, None, None,
+                              [comment], special_fields)
+            req.ng_level = 1
+            return req
 
         if element_type == "functional":
             for attribute in dict_attribute_value:
@@ -108,19 +113,21 @@ class SpecObjectParser:
                     if attribute == "requirement_ID" or attribute == "functional_description":
                         raise ValueError("Required_attribute_missing")
             # initialize special fields
-            special_field_asil = SpecialField(dict_attribute_value["requirement_ID"], "asil",
+            special_field_asil = SpecialField(dict_attribute_value["requirement_ID"], "ASIL",
                                               dict_attribute_value["asil"])
-            special_field_allocation = SpecialField(dict_attribute_value["requirement_ID"], "allocation",
+            special_field_allocation = SpecialField(dict_attribute_value["requirement_ID"], "ALLOCATION",
                                                     dict_attribute_value["allocation"])
             special_fields = [special_field_asil, special_field_allocation]
 
             list_references = SpecObjectParser.getparents(dict_attribute_value, relation_map)
 
             # return Requirement object
-            return Requirement("DOCUMENT", None, None, dict_attribute_value["requirement_ID"],
-                               dict_attribute_value["status"], None, list_references,
-                               dict_attribute_value["functional_description"], None, None, None,
-                               None, special_fields)
+            req = Requirement("DOCUMENT", None, None, dict_attribute_value["requirement_ID"],
+                              dict_attribute_value["status"], None, list_references,
+                              dict_attribute_value["functional_description"], None, None, None,
+                              [], special_fields)
+            req.ng_level = 1
+            return req
 
     @staticmethod
     def checkasilvalues(attribute_value):
