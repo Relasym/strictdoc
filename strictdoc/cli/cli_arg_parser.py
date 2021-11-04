@@ -1,6 +1,5 @@
 import argparse
 
-
 EXPORT_FORMATS = ["html", "html-standalone", "rst", "excel"]
 
 
@@ -41,6 +40,7 @@ def cli_args_parser() -> argparse.ArgumentParser:
         title="command", dest="command"
     )
     command_subparsers.required = True
+
 
     # Command: Export
     command_parser_export = command_subparsers.add_parser(
@@ -98,6 +98,13 @@ def cli_args_parser() -> argparse.ArgumentParser:
             "(warning: implementation is not complete)."
         ),
     )
+    command_parser_export.add_argument(
+        ##Todo try to add extra path for requirements to include *.py files from another Directory with the command Line
+        "requirement_paths",
+        type=str,
+        nargs="+",
+        help="One or more folders with Requirement files",
+    )
 
     # Command: Import
     command_parser_export = command_subparsers.add_parser(
@@ -143,18 +150,19 @@ class PassthroughCommandConfig:
 
 class ExportCommandConfig:
     def __init__(
-        self,
-        strictdoc_root_path,
-        input_paths,
-        output_dir,
-        project_title,
-        formats,
-        fields,
-        no_parallelization,
-        enable_mathjax,
-        experimental_enable_file_traceability,
+            self,
+            strictdoc_root_path,
+            input_paths,
+            output_dir,
+            project_title,
+            formats,
+            fields,
+            no_parallelization,
+            enable_mathjax,
+            experimental_enable_file_traceability,
     ):
         self.strictdoc_root_path = strictdoc_root_path
+
         self.input_paths = input_paths
         self.output_dir = output_dir
         self.project_title = project_title
