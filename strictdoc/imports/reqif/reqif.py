@@ -171,3 +171,4 @@ class ReqIFImport:
                 new_list.append(id_map[list_item])
             new_map[id_map[k]] = new_list
         return new_map
+
