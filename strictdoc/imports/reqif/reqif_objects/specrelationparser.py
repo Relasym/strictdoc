@@ -28,6 +28,12 @@ class SpecRelationParser:
             if key_ID == None:
                 raise ValueError("specrelations_missingID")
 
+            # sometimes blank spaces and new lines get added, remove them
+            key_ID = key_ID.replace("\n", "")
+            key_ID = key_ID.replace(" ", "")
+            value_ID = value_ID.replace("\n", "")
+            value_ID = value_ID.replace(" ", "")
+
             regex_search = re.compile("^[a-zA-Z0-9_\-.]+$")
             if not regex_search.match(key_ID):
                 raise ValueError("specrelations_invalidID")
