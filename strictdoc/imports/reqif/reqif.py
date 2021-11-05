@@ -165,7 +165,7 @@ class ReqIFImport:
             for attribute in spec_object[0]:
                 if attribute[0][0].text in identifier_list:
                     spec_object_uid = attribute.attrib["THE-VALUE"]
-                    
+
             id_map[spec_object_identifier] = spec_object_uid
 
         # replace all reqif ids with UIDs
