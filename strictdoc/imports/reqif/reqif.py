@@ -147,23 +147,26 @@ class ReqIFImport:
     @staticmethod
     def replace_ids(spec_objects, spec_types, structure_map):
         # TODO due to bad planning, this function needs to replace all reqIF ids in the structure map with UIDs
-        # need to fix: replaces reqif object-ids with type-ids atm
+
+        # get attribute-identifiers for requirement_ID
+        identifier_list = []
+        for type_identifier in spec_types:
+            type_attributes = spec_types[type_identifier][1]
+            for attribute in type_attributes:
+                if type_attributes[attribute] == "requirement_ID":
+                    identifier_list.append(attribute)
 
         # create map of all spec_objects and their UID:
         id_map = {}
         for spec_object in spec_objects:
             spec_object: Element
-            spec_object_id = spec_object.attrib["IDENTIFIER"]
-            spec_type = list(spec_object)[1]
-            spec_type_id = list(spec_type)[0].text
-            type_data = spec_types[spec_type_id]
-            attrib_map = type_data[1]
-            for k, v in attrib_map.items():
-                if v == "requirement_ID":
-                    uid = k
-                    continue
-            assert uid
-            id_map[spec_object_id] = uid
+            spec_object_identifier = spec_object.attrib["IDENTIFIER"]
+
+            for attribute in spec_object[0]:
+                if attribute[0][0].text in identifier_list:
+                    spec_object_uid = attribute.attrib["THE-VALUE"]
+                    
+            id_map[spec_object_identifier] = spec_object_uid
 
         # replace all reqif ids with UIDs
         new_map = {}
@@ -173,5 +176,4 @@ class ReqIFImport:
                 new_list.append(id_map[list_item])
             new_map[id_map[k]] = new_list
         return new_map
-
 
