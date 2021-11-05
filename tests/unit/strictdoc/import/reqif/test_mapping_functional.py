@@ -46,14 +46,6 @@ def test_mapping_functional_uid_missing(fixture_functional_missing_uid, fixture_
     # [/LLR001-T003]
 
 
-def test_mapping_functional_relation_positive(fixture_functional_correctreqifobject, fixture_functional_type_map,
-                                              fixture_functional_relation_map):
-    object_string_pos = fixture_functional_correctreqifobject
-    xml_object = etree.fromstring(object_string_pos)
-    # TODO write relation test when defined
-    assert (1 == 2)
-
-
 def test_mapping_functional_allocation_positive(fixture_functional_correctreqifobject, fixture_functional_type_map,
                                                 fixture_functional_relation_map):
     object_string_pos = fixture_functional_correctreqifobject
